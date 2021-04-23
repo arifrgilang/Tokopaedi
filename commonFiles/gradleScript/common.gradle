@@ -1,0 +1,15 @@
+import dependencies.Dependencies
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation Dependencies.Kotlin.kotlin_stdlib
+
+    testImplementation Dependencies.Test.test_junit
+    androidTestImplementation Dependencies.Test.android_test_espresso_core
+    androidTestImplementation Dependencies.Test.android_test_rules
+    androidTestImplementation Dependencies.Test.android_test_runner
+    testImplementation Dependencies.Test.mockk
+    testImplementation Dependencies.Test.testing_core_testing
+    testImplementation Dependencies.Test.coroutine
+}
