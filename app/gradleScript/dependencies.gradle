@@ -1,0 +1,32 @@
+import dependencies.Dependencies
+
+apply from: Dependencies.common
+
+dependencies {
+
+    // App Moduled
+    implementation project(Dependencies.Module.domain)
+    implementation project(Dependencies.Module.data)
+    implementation project(Dependencies.Module.presentation)
+
+    // Hawk
+    implementation Dependencies.Hawk.hawk
+
+    // Multidex
+    implementation Dependencies.Multidex.multidex
+
+    // Firebase
+    implementation platform(Dependencies.Firebase.bom)
+    implementation Dependencies.Firebase.analytics
+
+    // Koin
+    implementation Dependencies.Koin.koin
+
+    // Android X
+    implementation Dependencies.AndroidX.appcompat
+    implementation Dependencies.AndroidX.materialDesign
+    implementation Dependencies.AndroidX.legacySupport
+
+    // Timber
+    implementation Dependencies.Timber.timber
+}

@@ -28,6 +28,12 @@ object Dependencies {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
     }
 
+    object Firebase {
+        const val firebaseUI = "com.firebaseui:firebase-ui-auth:${Version.firebaseUI}"
+        const val bom = "com.google.firebase:firebase-bom:${Version.bom}"
+        const val analytics = "com.google.firebase:firebase-analytics-ktx"
+    }
+
     object Coroutine {
         const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
     }

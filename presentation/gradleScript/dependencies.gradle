@@ -8,6 +8,11 @@ dependencies {
     //Modules
     implementation project(Dependencies.Module.domain)
 
+    // Firebase
+    implementation platform(Dependencies.Firebase.bom)
+    implementation Dependencies.Firebase.analytics
+    implementation Dependencies.Firebase.firebaseUI
+
     //Android X
     implementation Dependencies.AndroidX.appcompat
     implementation Dependencies.AndroidX.materialDesign

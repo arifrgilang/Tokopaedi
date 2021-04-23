@@ -4,12 +4,16 @@ package dependencies
  */
 object Version {
     // Android configuration
-    const val appId = "com.arifrgilang.unpadmobile"
+    const val appId = "com.arifrgilang.opakushop"
     const val buildTools = "29.0.3"
     const val compileSdk = 29
     const val targetSdk = 29
     const val minSdk = 21
     const val kotlin = "1.4.21"
+
+    // Firebase
+    const val firebaseUI = "6.4.0"
+    const val bom = "27.1.0"
 
     // App versioning
     const val versionCode = 1
