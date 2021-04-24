@@ -43,4 +43,10 @@ dependencies {
     implementation Dependencies.Glide.glide
     implementation Dependencies.Glide.glideLegacy
     kapt Dependencies.Glide.glideKapt
+
+    // Ui
+    implementation Dependencies.Ui.circularImage
+
+    // Timber
+    implementation Dependencies.Timber.timber
 }

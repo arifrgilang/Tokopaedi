@@ -3,7 +3,9 @@
     package="com.arifrgilang.presentation">
 
     <application>
-        <activity android:name="com.arifrgilang.presentation.LoginActivity">
+        <activity android:name=".DashboardActivity"
+            android:theme="@style/Theme.OpakuShop"/>
+        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -11,4 +13,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

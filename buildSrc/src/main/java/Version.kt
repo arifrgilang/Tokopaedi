@@ -11,6 +11,9 @@ object Version {
     const val minSdk = 21
     const val kotlin = "1.4.21"
 
+    // Ui Related
+    const val circularImage = "4.0.2"
+
     // Firebase
     const val firebaseUI = "6.4.0"
     const val bom = "27.1.0"

@@ -34,6 +34,10 @@ object Dependencies {
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
     }
 
+    object Ui {
+        const val circularImage = "com.mikhaellopez:circularimageview:${Version.circularImage}"
+    }
+
     object Coroutine {
         const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
     }

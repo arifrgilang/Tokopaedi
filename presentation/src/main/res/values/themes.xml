@@ -27,4 +27,16 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@drawable/splash_bg</item>
     </style>
+
+    <style name="CustomSelectorChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:checkable">true</item>
+        <item name="android:textColor">@color/chip_text_selector</item>
+        <item name="chipBackgroundColor">@color/chip_background_selector</item>
+        <item name="chipStrokeColor">@color/green_dark</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">8dp</item>
+    </style>
+
 </resources>
