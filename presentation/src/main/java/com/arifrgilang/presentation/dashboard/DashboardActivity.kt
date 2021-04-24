@@ -86,7 +86,12 @@ class DashboardActivity : BaseBindingActivity<ActivityDashboardBinding>() {
     }
 
     private fun navigateToLogin() {
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(
+            Intent(this, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+        )
         finish()
     }
 }

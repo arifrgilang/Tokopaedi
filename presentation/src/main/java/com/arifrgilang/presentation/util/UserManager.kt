@@ -25,7 +25,8 @@ object UserManager {
 
     fun Activity.logout(callback: OnLogout) {
         AuthUI.getInstance()
-            .delete(this)
+            .signOut(this)
+//            .delete(this)
             .addOnCompleteListener {
                 callback.perform()
             }

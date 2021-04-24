@@ -12,6 +12,7 @@ dependencies {
     implementation platform(Dependencies.Firebase.bom)
     implementation Dependencies.Firebase.analytics
     implementation Dependencies.Firebase.firebaseUI
+    implementation Dependencies.Firebase.tagManager
 
     //Android X
     implementation Dependencies.AndroidX.appcompat

@@ -32,6 +32,7 @@ object Dependencies {
         const val firebaseUI = "com.firebaseui:firebase-ui-auth:${Version.firebaseUI}"
         const val bom = "com.google.firebase:firebase-bom:${Version.bom}"
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
+        const val tagManager = "com.google.android.gms:play-services-tagmanager:${Version.tagManager}"
     }
 
     object Ui {

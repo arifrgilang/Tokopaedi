@@ -17,6 +17,7 @@ object Version {
     // Firebase
     const val firebaseUI = "6.4.0"
     const val bom = "27.1.0"
+    const val tagManager = "11.0.4"
 
     // App versioning
     const val versionCode = 1

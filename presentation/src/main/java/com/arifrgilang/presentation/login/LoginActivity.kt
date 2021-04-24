@@ -11,6 +11,7 @@ import com.arifrgilang.presentation.util.UserManager.isUserLoggedIn
 import com.arifrgilang.presentation.util.UserManager.login
 import com.arifrgilang.presentation.util.base.BaseBindingActivity
 import com.arifrgilang.presentation.util.toast
+import timber.log.Timber
 
 class LoginActivity : BaseBindingActivity<ActivityLoginBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,10 @@ class LoginActivity : BaseBindingActivity<ActivityLoginBinding>() {
     override fun setupData(savedInstanceState: Bundle?) {}
 
     override fun setupView() {
-        if(isUserLoggedIn()) navigateToDashboard()
+        if(isUserLoggedIn()) {
+            Timber.d("User is logged in")
+            navigateToDashboard()
+        }
         binding.btnLogin.setOnClickListener() {
             login()
         }
