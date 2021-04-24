@@ -1,29 +1,25 @@
-package com.arifrgilang.presentation.dashboard
+package com.arifrgilang.presentation.ui.dashboard
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.isVisible
+import com.arifrgilang.presentation.ui.MainActivity
 import com.arifrgilang.presentation.R
-import com.arifrgilang.presentation.databinding.ActivityDashboardBinding
-import com.arifrgilang.presentation.login.LoginActivity
+import com.arifrgilang.presentation.databinding.FragmentDashboardBinding
 import com.arifrgilang.presentation.model.UserUiModel
-import com.arifrgilang.presentation.util.UserManager
-import com.arifrgilang.presentation.util.UserManager.logout
-import com.arifrgilang.presentation.util.base.BaseBindingActivity
+import com.arifrgilang.presentation.util.base.BaseBindingFragment
 import com.arifrgilang.presentation.util.toast
 import com.arifrgilang.presentation.util.view.LogoutDialogFragment
 import com.arifrgilang.presentation.util.view.observeEvent
 import com.google.android.material.chip.Chip
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
-class DashboardActivity : BaseBindingActivity<ActivityDashboardBinding>() {
+
+class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
     private val viewModel by viewModel<DashboardViewModel>()
-    override fun contentView(): Int = R.layout.activity_dashboard
+    override fun contentView(): Int = R.layout.fragment_dashboard
 
     override fun setupData(savedInstanceState: Bundle?) {
         setViewModelObservers()
-        if (!UserManager.isUserLoggedIn()) navigateToLogin()
         viewModel.getUserData()
     }
 
@@ -43,7 +39,7 @@ class DashboardActivity : BaseBindingActivity<ActivityDashboardBinding>() {
     }
 
     private fun showError(unit: Unit) {
-        toast("Error occurred")
+        requireContext().toast("Error occurred")
     }
 
     override fun setupView() {
@@ -60,7 +56,7 @@ class DashboardActivity : BaseBindingActivity<ActivityDashboardBinding>() {
                 R.layout.item_selectable_chip,
                 binding.cgClothes,
                 false) as Chip).apply {
-                    text = item
+                text = item
             }
             binding.cgClothes.addView(chip)
         }
@@ -71,27 +67,12 @@ class DashboardActivity : BaseBindingActivity<ActivityDashboardBinding>() {
         LogoutDialogFragment(
             object : LogoutDialogFragment.DialogCallback {
                 override fun isAgree() {
-                    performLogout()
+                    (activity as MainActivity).performLogout()
                 }
             }
-        ).show(supportFragmentManager, "Logout Dialog Fragment")
-    }
-
-    private fun performLogout() {
-        logout(object : UserManager.OnLogout {
-            override fun perform() {
-                navigateToLogin()
-            }
-        })
-    }
-
-    private fun navigateToLogin() {
-        startActivity(
-            Intent(this, LoginActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }
+        ).show(
+            requireActivity().supportFragmentManager,
+            "Logout Dialog Fragment"
         )
-        finish()
     }
 }

@@ -1,7 +1,7 @@
 package com.arifrgilang.presentation.di
 
-import com.arifrgilang.presentation.dashboard.DashboardViewModel
-import com.arifrgilang.presentation.dashboard.DashboardViewModelImpl
+import com.arifrgilang.presentation.ui.dashboard.DashboardViewModel
+import com.arifrgilang.presentation.ui.dashboard.DashboardViewModelImpl
 import org.koin.dsl.module
 
 

@@ -1,4 +1,4 @@
-package com.arifrgilang.presentation.dashboard
+package com.arifrgilang.presentation.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
