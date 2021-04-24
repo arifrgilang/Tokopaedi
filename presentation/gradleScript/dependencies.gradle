@@ -1,0 +1,52 @@
+import dependencies.Dependencies
+
+apply from: Dependencies.common
+
+dependencies {
+    implementation Dependencies.Kotlin.kotlin_script
+
+    //Modules
+    implementation project(Dependencies.Module.domain)
+
+    // Firebase
+    implementation platform(Dependencies.Firebase.bom)
+    implementation Dependencies.Firebase.analytics
+    implementation Dependencies.Firebase.firebaseUI
+
+    //Android X
+    implementation Dependencies.AndroidX.appcompat
+    implementation Dependencies.AndroidX.materialDesign
+    implementation Dependencies.AndroidX.constraintlayout
+    implementation Dependencies.AndroidX.recyclerview
+    implementation Dependencies.AndroidX.legacySupport
+    implementation Dependencies.AndroidX.swipeRefresh
+
+    //Koin
+    implementation Dependencies.Koin.koin
+
+    //Coroutine
+    implementation Dependencies.Coroutine.coroutine
+
+    //Navigation
+    implementation Dependencies.Navigation.fragment
+    implementation Dependencies.Navigation.ui
+
+    //LifeCycle
+    implementation Dependencies.Lifecycle.extension
+    implementation Dependencies.Lifecycle.livedata
+    implementation Dependencies.Lifecycle.viewmodel
+
+    // Hawk
+    implementation Dependencies.Hawk.hawk
+
+    // Glide
+    implementation Dependencies.Glide.glide
+    implementation Dependencies.Glide.glideLegacy
+    kapt Dependencies.Glide.glideKapt
+
+    // Ui
+    implementation Dependencies.Ui.circularImage
+
+    // Timber
+    implementation Dependencies.Timber.timber
+}
