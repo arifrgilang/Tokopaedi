@@ -3,7 +3,7 @@
     package="com.arifrgilang.presentation">
 
     <application>
-        <activity android:name=".DashboardActivity"
+        <activity android:name=".dashboard.DashboardActivity"
             android:theme="@style/Theme.OpakuShop"/>
         <activity android:name=".login.LoginActivity">
             <intent-filter>

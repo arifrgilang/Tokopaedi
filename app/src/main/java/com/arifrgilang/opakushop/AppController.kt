@@ -2,6 +2,7 @@ package com.arifrgilang.opakushop
 
 import android.app.Application
 import androidx.multidex.MultiDexApplication
+import com.arifrgilang.presentation.di.presentationModule
 import com.orhanobut.hawk.Hawk
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -15,20 +16,22 @@ class AppController: MultiDexApplication(){
     override fun onCreate() {
         super.onCreate()
         instance = this
+
         Hawk.init(this@AppController).build()
+
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
 
-//        startKoin {
-//            androidContext(this@AppController)
-//            modules(
+        startKoin {
+            androidContext(this@AppController)
+            modules(
 //                appModule,
 //                dataModule,
 //                domainModule,
-//                presentationModule
-//            )
-//        }
+                presentationModule
+            )
+        }
     }
 
     companion object {

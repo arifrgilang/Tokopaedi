@@ -3,17 +3,14 @@ package com.arifrgilang.presentation.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.arifrgilang.presentation.DashboardActivity
+import com.arifrgilang.presentation.dashboard.DashboardActivity
 import com.arifrgilang.presentation.R
 import com.arifrgilang.presentation.databinding.ActivityLoginBinding
 import com.arifrgilang.presentation.util.Constant.GOOGLE_SIGN_IN
-import com.arifrgilang.presentation.util.UserManager
 import com.arifrgilang.presentation.util.UserManager.isUserLoggedIn
 import com.arifrgilang.presentation.util.UserManager.login
 import com.arifrgilang.presentation.util.base.BaseBindingActivity
 import com.arifrgilang.presentation.util.toast
-import com.firebase.ui.auth.AuthUI
-import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : BaseBindingActivity<ActivityLoginBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
