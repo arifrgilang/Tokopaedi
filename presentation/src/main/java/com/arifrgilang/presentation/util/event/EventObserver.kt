@@ -1,11 +1,9 @@
-package com.arifrgilang.presentation.util.view
+package com.arifrgilang.presentation.util.event
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.arifrgilang.presentation.util.Event
-import com.arifrgilang.presentation.util.handleOrPass
 
 
 /**

@@ -11,7 +11,7 @@ import com.arifrgilang.presentation.databinding.ActivityMainBinding
 import com.arifrgilang.presentation.login.LoginFragmentDirections
 import com.arifrgilang.presentation.util.Constant.GOOGLE_SIGN_IN
 import com.arifrgilang.presentation.util.base.BaseBindingActivity
-import com.arifrgilang.presentation.util.toast
+import com.arifrgilang.presentation.util.view.toast
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 

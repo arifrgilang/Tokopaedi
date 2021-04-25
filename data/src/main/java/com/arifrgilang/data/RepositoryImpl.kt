@@ -1,4 +1,4 @@
 package com.arifrgilang.data
 
-class MyClass {
+class RepositoryImpl {
 }

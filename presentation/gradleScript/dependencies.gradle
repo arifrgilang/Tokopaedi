@@ -14,6 +14,11 @@ dependencies {
     implementation Dependencies.Firebase.firebaseUI
     implementation Dependencies.Firebase.tagManager
 
+    // RoomDB
+    implementation Dependencies.Room.runtime
+    implementation Dependencies.Room.ktxCoroutines
+    kapt Dependencies.Room.compiler
+
     //Android X
     implementation Dependencies.AndroidX.appcompat
     implementation Dependencies.AndroidX.materialDesign

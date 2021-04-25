@@ -12,6 +12,12 @@ dependencies {
     // Coroutine
     implementation Dependencies.Coroutine.coroutine
 
+    // RoomDB
+    implementation Dependencies.Room.runtime
+    implementation Dependencies.Room.ktxCoroutines
+    kapt Dependencies.Room.compiler
+
+    //
 //    // Retrofit
 //    api Dependencies.Retrofit2.retrofit
 //    api Dependencies.Retrofit2.converterGson

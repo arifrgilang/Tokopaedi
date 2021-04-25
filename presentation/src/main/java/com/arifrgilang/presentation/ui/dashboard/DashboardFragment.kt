@@ -7,7 +7,7 @@ import com.arifrgilang.presentation.R
 import com.arifrgilang.presentation.databinding.FragmentDashboardBinding
 import com.arifrgilang.presentation.model.UserUiModel
 import com.arifrgilang.presentation.util.base.BaseBindingFragment
-import com.arifrgilang.presentation.util.toast
+import com.arifrgilang.presentation.util.view.toast
 import com.arifrgilang.presentation.util.view.LogoutDialogFragment
 import com.arifrgilang.presentation.util.view.observeEvent
 import com.google.android.material.chip.Chip

@@ -1,4 +1,4 @@
-package com.arifrgilang.presentation.util
+package com.arifrgilang.presentation.util.event
 
 
 /**

@@ -14,6 +14,9 @@ object Version {
     // Ui Related
     const val circularImage = "4.0.2"
 
+    // RoomDB
+    const val room = "2.2.6"
+
     // Firebase
     const val firebaseUI = "6.4.0"
     const val bom = "27.1.0"

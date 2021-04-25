@@ -1,4 +1,4 @@
-package com.arifrgilang.presentation.util
+package com.arifrgilang.presentation.util.view
 
 import android.content.Context
 import android.widget.ImageView
