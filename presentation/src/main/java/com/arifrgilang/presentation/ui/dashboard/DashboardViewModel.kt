@@ -5,7 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arifrgilang.presentation.model.UserUiModel
-import com.arifrgilang.presentation.util.Event
+import com.arifrgilang.presentation.util.event.Event
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch

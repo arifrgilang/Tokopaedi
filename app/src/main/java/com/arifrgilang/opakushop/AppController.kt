@@ -2,6 +2,8 @@ package com.arifrgilang.opakushop
 
 import android.app.Application
 import androidx.multidex.MultiDexApplication
+import com.arifrgilang.data.di.dataModule
+import com.arifrgilang.domain.di.domainModule
 import com.arifrgilang.presentation.di.presentationModule
 import com.orhanobut.hawk.Hawk
 import org.koin.android.ext.koin.androidContext
@@ -27,8 +29,8 @@ class AppController: MultiDexApplication(){
             androidContext(this@AppController)
             modules(
 //                appModule,
-//                dataModule,
-//                domainModule,
+                dataModule,
+                domainModule,
                 presentationModule
             )
         }

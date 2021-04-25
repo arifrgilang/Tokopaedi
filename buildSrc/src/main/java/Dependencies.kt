@@ -23,6 +23,11 @@ object Dependencies {
         const val presentation = ":presentation"
     }
 
+    object Moshi {
+        const val moshi = "com.squareup.moshi:moshi:${Version.moshi}"
+        const val kaptMoshi = "com.squareup.moshi:moshi-kotlin-codegen:${Version.moshi}"
+    }
+
     object Room {
         const val runtime = "androidx.room:room-runtime:${Version.room}"
         const val compiler = "androidx.room:room-compiler:${Version.room}"

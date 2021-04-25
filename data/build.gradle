@@ -1,18 +1,54 @@
 import dependencies.*
 
 plugins {
-    id 'java-library'
-    id 'kotlin'
+    id 'com.android.library'
+    id 'kotlin-android'
     id 'kotlin-kapt'
 }
 
 apply from: Dependencies.dependency
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
+android {
+    compileSdkVersion Version.compileSdk
+    buildToolsVersion Version.buildTools
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.32"
+    defaultConfig {
+        minSdkVersion Version.minSdk
+        targetSdkVersion Version.targetSdk
+        versionCode Version.versionCode
+        versionName Version.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
 }

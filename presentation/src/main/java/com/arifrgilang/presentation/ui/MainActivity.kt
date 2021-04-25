@@ -6,9 +6,9 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.arifrgilang.presentation.R
-import com.arifrgilang.presentation.dashboard.DashboardFragmentDirections
 import com.arifrgilang.presentation.databinding.ActivityMainBinding
-import com.arifrgilang.presentation.login.LoginFragmentDirections
+import com.arifrgilang.presentation.ui.dashboard.DashboardFragmentDirections
+import com.arifrgilang.presentation.ui.login.LoginFragmentDirections
 import com.arifrgilang.presentation.util.Constant.GOOGLE_SIGN_IN
 import com.arifrgilang.presentation.util.base.BaseBindingActivity
 import com.arifrgilang.presentation.util.view.toast

@@ -17,6 +17,9 @@ object Version {
     // RoomDB
     const val room = "2.2.6"
 
+    // Moshi
+    const val moshi = "1.12.0"
+
     // Firebase
     const val firebaseUI = "6.4.0"
     const val bom = "27.1.0"
