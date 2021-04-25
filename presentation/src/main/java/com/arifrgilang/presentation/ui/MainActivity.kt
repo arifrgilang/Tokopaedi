@@ -14,8 +14,10 @@ import com.arifrgilang.presentation.util.base.BaseBindingActivity
 import com.arifrgilang.presentation.util.view.toast
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
+    private val viewModel by viewModel<MainViewModel>()
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
 
@@ -28,6 +30,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
     override fun setupData(savedInstanceState: Bundle?) {
         mAuthListener = getAuthStateListener()
+        viewModel.populateDatabase(this)
     }
 
     override fun setupView() {

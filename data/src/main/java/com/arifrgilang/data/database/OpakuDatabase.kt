@@ -37,7 +37,7 @@ internal abstract class OpakuDatabase : RoomDatabase() {
                     context.applicationContext,
                     OpakuDatabase::class.java,
                     "opaku_database"
-                ).build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
                 return instance
             }
