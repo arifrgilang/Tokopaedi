@@ -10,6 +10,7 @@ import com.squareup.moshi.JsonClass
  * Created by arifrgilang on 4/26/2021
  */
 @Entity(tableName = "CART")
+@JsonClass(generateAdapter = true)
 data class CartDataModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "USER_EMAIL") val userEmail: String?,

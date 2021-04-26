@@ -41,6 +41,22 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         viewModel.isError.observeEvent(this, ::showError)
         viewModel.clothesData.observe(this, ::onDataFetched)
         viewModel.isLoadingClothes.observe(this, ::showLoadingClothes)
+
+        viewModel.cartCount.observe(this, ::onCartCountFetched)
+        viewModel.checkoutCount.observe(this, ::onCheckoutCountFetched)
+        viewModel.historyCount.observe(this, ::onHistoryCountFetched)
+    }
+
+    private fun onHistoryCountFetched(count: Int) {
+        binding.historyCount = count
+    }
+
+    private fun onCheckoutCountFetched(count: Int) {
+        binding.checkoutCount = count
+    }
+
+    private fun onCartCountFetched(count: Int) {
+        binding.cartCount = count
     }
 
     private fun onDataFetched(list: List<ItemUiModel>?) {
@@ -50,6 +66,9 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
 
     private fun bindUserData(userData: UserUiModel) {
         binding.user = userData
+        viewModel.getCartWithEmail(userData.email)
+        viewModel.getCheckoutWithEmail(userData.email)
+        viewModel.getHistoryWithEmail(userData.email)
     }
 
     private fun showLoadingProfile(isLoading: Boolean) {

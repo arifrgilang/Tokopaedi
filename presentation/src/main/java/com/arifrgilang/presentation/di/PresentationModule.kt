@@ -1,9 +1,6 @@
 package com.arifrgilang.presentation.di
 
-import com.arifrgilang.presentation.mapper.ItemDomainMapper
-import com.arifrgilang.presentation.mapper.ItemDomainMapperImpl
-import com.arifrgilang.presentation.mapper.PromoDomainMapper
-import com.arifrgilang.presentation.mapper.PromoDomainMapperImpl
+import com.arifrgilang.presentation.mapper.*
 import com.arifrgilang.presentation.ui.MainViewModel
 import com.arifrgilang.presentation.ui.MainViewModelImpl
 import com.arifrgilang.presentation.ui.dashboard.DashboardRvAdapter
@@ -22,34 +19,41 @@ import org.koin.dsl.module
  * Created by arifrgilang on 4/24/2021
  */
 val presentationModule = module {
+    // UI Mapper
     single<ItemDomainMapper> {
         ItemDomainMapperImpl()
     }
-
     single<PromoDomainMapper> {
         PromoDomainMapperImpl(get())
     }
-
-    viewModel<DashboardViewModel> {
-        DashboardViewModelImpl(get(), get())
+    single<CartDomainMapper> {
+        CartDomainMapperImpl()
+    }
+    single<CheckoutDomainMapper> {
+        CheckoutDomainMapperImpl(get())
+    }
+    single<HistoryDomainMapper> {
+        HistoryDomainMapperImpl(get())
     }
 
+    // ViewModel
+    viewModel<DashboardViewModel> {
+        DashboardViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+    }
     viewModel<MainViewModel> {
         MainViewModelImpl(get(), get(), get(), get())
     }
-
     viewModel<ItemDetailViewModel> {
         ItemDetailViewModelImpl(get(), get())
     }
-
     viewModel<PromoDetailViewModel> {
         PromoDetailViewModelImpl(get(), get())
     }
 
+    // RecyclerView Adapter
     single {
         DashboardRvAdapter(get())
     }
-
     single {
         PromoDetailRvAdapter(get())
     }
