@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="user"
+            type="com.arifrgilang.presentation.model.UserUiModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".DashboardActivity"
+        tools:context=".dashboard.DashboardActivity"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -20,17 +22,15 @@
 
             android:background="@color/green_dark">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Opaku Shop"
 
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@id/btn_logout"
-                android:background="@drawable/shape_search_bg"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"/>
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"/>
 
             <ImageView
                 android:id="@+id/btn_logout"
@@ -56,52 +56,78 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:background="#F5F5F5">
-                    <com.mikhaellopez.circularimageview.CircularImageView
-                        android:id="@+id/iv_profile"
-                        android:layout_width="37dp"
-                        android:layout_height="37dp"
-                        android:src="@drawable/logo_toko"
+                    android:background="#F4F4F4">
 
-                        android:layout_margin="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:civ_border="false"/>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <ProgressBar
+                        android:id="@+id/pb_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="8dp"
-                        app:layout_constraintStart_toEndOf="@id/iv_profile"
-                        app:layout_constraintTop_toTopOf="@id/iv_profile"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_profile">
+                        android:layout_margin="16dp"
+                        android:indeterminateTint="@color/green_dark"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
-                        <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Arif R Gilang"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
 
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@id/tv_email"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/iv_profile"
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
+                            android:imageUrl="@{user.photoUrl}"
+
+                            android:layout_margin="16dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
-
-                        <TextView
-                            android:id="@+id/tv_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="arifrgilang@gmail.com"
-
-                            app:layout_constraintTop_toBottomOf="@id/tv_name"
+                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:civ_border="false"/>
 
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintStart_toEndOf="@id/iv_profile"
+                            app:layout_constraintTop_toTopOf="@id/iv_profile"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_profile">
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@{user.name}"
+
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@id/tv_email"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"/>
+
+                            <TextView
+                                android:id="@+id/tv_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@{user.email}"
+
+                                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
@@ -176,7 +202,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Toddler Clothes"
+                        android:text="Clothes"
 
                         android:layout_marginTop="8dp"
                         android:layout_marginStart="16dp"
@@ -208,7 +234,8 @@
                             app:singleSelection="true"
                             app:selectionRequired="true"
                             android:paddingStart="16dp"
-                            android:paddingEnd="16dp"/>
+                            android:paddingEnd="16dp"
+                            android:layout_marginBottom="-8dp"/>
 
                     </HorizontalScrollView>
 
@@ -216,6 +243,17 @@
                         android:id="@+id/rv_clothes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/logo_toko"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

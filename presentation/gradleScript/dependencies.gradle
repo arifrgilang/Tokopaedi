@@ -12,6 +12,15 @@ dependencies {
     implementation platform(Dependencies.Firebase.bom)
     implementation Dependencies.Firebase.analytics
     implementation Dependencies.Firebase.firebaseUI
+    implementation Dependencies.Firebase.tagManager
+
+    // RoomDB
+    implementation Dependencies.Room.runtime
+    implementation Dependencies.Room.ktxCoroutines
+    kapt Dependencies.Room.compiler
+
+    // Gson
+    implementation Dependencies.Gson.gson
 
     //Android X
     implementation Dependencies.AndroidX.appcompat

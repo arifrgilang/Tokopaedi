@@ -23,6 +23,18 @@ object Dependencies {
         const val presentation = ":presentation"
     }
 
+    object Moshi {
+        const val moshi = "com.squareup.moshi:moshi:${Version.moshi}"
+        const val kaptMoshi = "com.squareup.moshi:moshi-kotlin-codegen:${Version.moshi}"
+    }
+
+    object Room {
+        const val runtime = "androidx.room:room-runtime:${Version.room}"
+        const val compiler = "androidx.room:room-compiler:${Version.room}"
+        const val ktxCoroutines = "androidx.room:room-ktx:${Version.room}"
+        const val roomCoroutines = "androidx.room:room-coroutines:${Version.room}"
+    }
+
     object Retrofit2 {
         const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
@@ -32,6 +44,7 @@ object Dependencies {
         const val firebaseUI = "com.firebaseui:firebase-ui-auth:${Version.firebaseUI}"
         const val bom = "com.google.firebase:firebase-bom:${Version.bom}"
         const val analytics = "com.google.firebase:firebase-analytics-ktx"
+        const val tagManager = "com.google.android.gms:play-services-tagmanager:${Version.tagManager}"
     }
 
     object Ui {

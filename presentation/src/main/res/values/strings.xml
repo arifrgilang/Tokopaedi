@@ -1,4 +1,202 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--  PROMO TABLE  -->
+    <string-array name="promo_id">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="promo_name">
+        <item>Ramadhan Discount</item>
+        <item>Free Shipping</item>
+    </string-array>
+    <string-array name="promo_creative_name">
+        <item>Ramadhan Discount</item>
+        <item>Free Shipping</item>
+    </string-array>
+    <string-array name="promo_creative_slot">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="promo_location_id">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!--  ITEM TABLE  -->
+    <string-array name="item_id">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
+    <string-array name="item_name">
+        <item>Logo-Graphic Scoop-Neck Tee for Toddler Girls</item>
+        <item>Unisex Logo-Graphic Short-Sleeve Printed Tee for Toddler</item>
+        <item>Graphic Crew-Neck Tee for Toddler Girls</item>
+        <item>Graphic Crew-Neck Tee for Toddler Girls</item>
+        <item>Unisex "Super Kid" Matching Graphic Tee for Toddler</item>
+        <item>Unisex Printed Pajama Set for Toddler &amp; Baby</item>
+        <item>Unisex Dinosaur Pajama Set for Toddler &amp; Baby</item>
+        <item>Unisex Alphabet Pajama Set for Toddler &amp; Baby</item>
+        <item>Unisex Pajama Set for Toddler &amp; Baby</item>
+        <item>Unisex Camo-Dino Pajama Set for Toddler &amp; Baby</item>
+        <item>2-Pack Sleeveless Jersey Romper for Toddler Girls</item>
+        <item>Printed Flutter-Sleeve Dress 2-Pack for Toddler Girls</item>
+        <item>Sleeveless Printed Jersey Romper for Toddler Girls</item>
+        <item>Printed Flutter-Sleeve Dress 2-Pack for Toddler Girls</item>
+        <item>2-Pack Fit &amp; Flare Jersey Dress for Toddler Girls</item>
+        <item>French Terry Pull-On Shorts 2-Pack for Toddler Girls</item>
+        <item>Unisex Jersey-Knit Jogger Shorts 2-Pack for Toddler</item>
+        <item>Chambray Ruffle-Hem Skirt for Toddler Girls</item>
+        <item>Button-Fly Jean Skirt for Toddler Girls</item>
+        <item>Tulle Tutu Skirt for Toddler Girls</item>
+    </string-array>
+    <string-array name="item_category">
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Pajamas &amp; Socks</item>
+        <item>Pajamas &amp; Socks</item>
+        <item>Pajamas &amp; Socks</item>
+        <item>Pajamas &amp; Socks</item>
+        <item>Pajamas &amp; Socks</item>
+        <item>Dresses &amp; Jumpsuits</item>
+        <item>Dresses &amp; Jumpsuits</item>
+        <item>Dresses &amp; Jumpsuits</item>
+        <item>Dresses &amp; Jumpsuits</item>
+        <item>Dresses &amp; Jumpsuits</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+    </string-array>
+    <string-array name="item_variant">
+        <item>Girl</item>
+        <item>Unisex</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Unisex</item>
+        <item>Unisex</item>
+        <item>Unisex</item>
+        <item>Unisex</item>
+        <item>Unisex</item>
+        <item>Unisex</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Girl</item>
+        <item>Unisex</item>
+        <item>Girl</item>
+        <item>Girl</item>
+    </string-array>
+    <string-array name="item_brand">
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+        <item>Old Navy</item>
+    </string-array>
+    <string-array name="item_price">
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>6</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>20</item>
+        <item>26</item>
+        <item>10</item>
+        <item>26</item>
+        <item>16</item>
+        <item>12</item>
+        <item>12</item>
+        <item>16</item>
+        <item>14</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="item_desc">
+        <item>Rib-knit scoop neck. Short sleeves. Old Navy logo graphic across front. Curved hem. Soft-washed, lightweight 100% cotton jersey. Tag-free label inside neck for added comfort.</item>
+        <item>Rib-knit crew neck. Short sleeves. Logo-graphic at front. Soft 100% cotton jersey. All-over print varies by color.</item>
+        <item>Rib-knit crew neck. Short sleeves. Graphic across front. Curved hem. Soft-washed, lightweight 100% cotton jersey. Tag-free label inside neck for added comfort.</item>
+        <item>Rib-knit crew neck. Short sleeves. Graphic across front. Curved hem. Soft-washed, lightweight 100% cotton jersey. Tag-free label inside neck for added comfort.</item>
+        <item>Online exclusive! Forge an unstoppable family unit, with these SUPER-awesome, SUPER-soft matching graphic tees for the whole crew! Rib-knit crew neck. Short sleeves. Matching family "Super Kid" graphic across front. Soft lightweight jersey. Tag-free label inside neck for added comfort.</item>
+        <item>Set includes short-sleeve sleep tee and coordinating sleep pants. Rib-knit crew neck. Short sleeves. Sleep pants have elasticized waist, rib-knit cuffs and coordinating prints. Soft, fine-gauge rib-knit cotton. Tag-free label inside neck for added comfort.</item>
+        <item>Sleep set includes patterned sleep tee and matching sleep leggings. Sleep tee has rib-knit crew neck, short sleeves, and all-over dinosaur and "Roar" pattern. Sleep leggings have elasticized waist, rib-knit cuffs, and all-over coordinating pattern. Soft, rib-knit cotton. Tag-free labels inside neck and back waist for added comfort.</item>
+        <item>This printed pajama set is totally adorable &amp; unisex, too. Wearable &amp; shareable for toddler boys &amp; toddler girls. Two-piece set includes printed long-sleeve sleep tee and matching printed sleep pants. Rib-knit crew neck and long-sleeve cuffs. Matching sleep pants have elasticized waistband and rib-knit cuffs. All-over print features letters of the alphabet. Soft-washed, fine-gauge rib-knit cotton.</item>
+        <item>This pajama set is totally cute &amp; unisex, too! Wearable &amp; shareable for toddler girl &amp; toddler boy. Set includes sleep tee and matching sleep shorts. Rib-knit crew neck. Short sleeves. Sleep shorts have elasticized waist and all-over coordinating print. Soft, fine-gauge rib-knit cotton.</item>
+        <item>This pajama set is totally classic and unisex, too. Wearable &amp; shareable for toddler boy &amp; toddler girl. Sleep set includes patterned sleep tee and matching sleep leggings. Sleep tee has rib-knit crew neck, short sleeves, and all-over dinosaur and camo pattern. Sleep leggings have elasticized waist, rib-knit cuffs, and all-over dinosaur and camo pattern. Soft-washed, rib-knit cotton. Tag-free labels inside neck and back waist for added comfort.</item>
+        <item>Online exclusive! Pack includes 2 sleeveless rompers, each in a different color or print. Elasticized neckline. Spaghetti straps. Cinched, elasticized waist. Snaps along inseam for easy dressing and changing, through size 2T. Soft cotton jersey.</item>
+        <item>Online exclusive! Pack includes 2 flutter sleeve dresses, each in a different print or pattern. Square neck and seamed front yoke. Soft-washed, woven cotton/rayon blend. Ruffled flutter sleeves. Relaxed swing silhouette.</item>
+        <item>Rounded neckline. Wide shoulder straps. Cinched, elasticized waist, with decorative bow-tie at center front. Short legs, with snaps along inseam for easy dressing and changing. Soft-washed cotton jersey.</item>
+        <item>Online exclusive! Pack includes 2 flutter sleeve dresses, each in a different print or pattern. Square neck and seamed front yoke. Soft-washed, woven cotton/rayon blend. Ruffled flutter sleeves. Relaxed swing silhouette.</item>
+        <item>Online exclusive! Pack includes 2 dresses, each in a different color or print. Rounded neckline. Short sleeves. Seamed, shirred waist. Soft cotton jersey.</item>
+        <item>Online exclusive! Pack includes 2 pairs of pull-on shorts for toddler girls, each in a different color, print or pattern. Elasticized waistband, with tie-front. On-seam scoop pockets. Soft-washed, cozy french terry. Easy pull-on style.</item>
+        <item>Online exclusive! Pack includes 2 pairs of jersey-knit jogger shorts for toddler. Elasticized rib-knit waistband, with functional, adjustable drawstring. Faux fly. Soft-washed, combed jersey knit. Easy pull-on style.</item>
+        <item>Elasticized waistband. Ruffled hem. Soft-washed cotton chambray. Easy pull-on style.</item>
+        <item>Interior adjustable waistband expands for a perfect fit. Three-snap closure at fly (one functional; two decorative). Scoop pockets in front; patch pockets in back. Soft cotton-blend denim, with contrast topstitching.</item>
+        <item>Elasticized pull-on waistband. Soft tulle mesh layers, with smooth taffeta underlayer skirt. Flared A-line silhouette.</item>
+    </string-array>
+    <string-array name="item_pic_url">
+        <item>https://oldnavy.gap.com/webcontent/0019/919/991/cn19919991.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0019/994/354/cn19994354.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/281/159/cn20281159.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/297/201/cn20297201.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/043/879/cn20043879.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/426/898/cn20426898.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0018/139/816/cn18139816.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0018/876/615/cn18876615.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0019/811/530/cn19811530.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0018/154/092/cn18154092.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/240/160/cn20240160.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/370/934/cn20370934.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/305/864/cn20305864.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/370/913/cn20370913.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0019/968/382/cn19968382.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0019/994/294/cn19994294.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0020/153/728/cn20153728.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0019/811/008/cn19811008.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0018/404/253/cn18404253.jpg</item>
+        <item>https://oldnavy.gap.com/webcontent/0019/109/201/cn19109201.jpg</item>
+    </string-array>
 </resources>

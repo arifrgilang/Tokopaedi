@@ -14,9 +14,16 @@ object Version {
     // Ui Related
     const val circularImage = "4.0.2"
 
+    // RoomDB
+    const val room = "2.2.6"
+
+    // Moshi
+    const val moshi = "1.12.0"
+
     // Firebase
     const val firebaseUI = "6.4.0"
     const val bom = "27.1.0"
+    const val tagManager = "11.0.4"
 
     // App versioning
     const val versionCode = 1
