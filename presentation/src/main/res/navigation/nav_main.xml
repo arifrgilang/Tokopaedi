@@ -35,6 +35,13 @@
             app:exitAnim="@anim/fui_slide_out_left"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_promoDetailFragment"
+            app:destination="@id/promoDetailFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -42,6 +49,21 @@
         android:label="ItemDetailFragment" >
         <argument
             android:name="itemId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/promoDetailFragment"
+        android:name="com.arifrgilang.presentation.ui.promodetail.PromoDetailFragment"
+        android:label="PromoDetailFragment" >
+        <action
+            android:id="@+id/action_promoDetailFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="promoId"
             app:argType="integer" />
     </fragment>
 </navigation>

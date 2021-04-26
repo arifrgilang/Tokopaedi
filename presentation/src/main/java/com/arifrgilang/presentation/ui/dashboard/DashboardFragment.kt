@@ -27,6 +27,7 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
     private val viewModel by viewModel<DashboardViewModel>()
     private val clothesList = mutableListOf("Tops & Tees", "Bottoms & Leggings", "Pajamas & Socks", "Dresses & Jumpsuits")
     private var currentCategory = "Tops & Tees"
+
     override fun contentView(): Int = R.layout.fragment_dashboard
 
     override fun setupData(savedInstanceState: Bundle?) {
@@ -69,6 +70,12 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         initRecyclerView()
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
+        }
+        binding.ivPromo1.setOnClickListener {
+            navigateToPromo(1)
+        }
+        binding.ivPromo2.setOnClickListener {
+            navigateToPromo(2)
         }
         binding.cgClothes.setOnCheckedChangeListener { _, checkedId ->
             /*
@@ -114,6 +121,15 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         }
     }
 
+    private fun navigateToPromo(promoId: Int) {
+        findNavController()
+            .navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToPromoDetailFragment(
+                    promoId
+                )
+            )
+    }
+
     private fun navigateToDetail(itemId: String) {
         findNavController()
             .navigate(
@@ -121,7 +137,6 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
                     itemId.toInt()
                 )
             )
-//        requireContext().toast("ITEM CLICKED $itemId")
     }
 
     private fun setupChipGroupClothes() {
