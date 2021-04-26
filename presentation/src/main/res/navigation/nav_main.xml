@@ -42,6 +42,15 @@
             app:exitAnim="@anim/fui_slide_out_left"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -66,4 +75,16 @@
             android:name="promoId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.arifrgilang.presentation.ui.cart.CartFragment"
+        android:label="CartFragment" />
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.arifrgilang.presentation.ui.checkout.CheckoutFragment"
+        android:label="CheckoutFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.arifrgilang.presentation.ui.history.HistoryFragment"
+        android:label="HistoryFragment" />
 </navigation>
