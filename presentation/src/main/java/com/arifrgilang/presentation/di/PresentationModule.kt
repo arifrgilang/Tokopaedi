@@ -9,6 +9,8 @@ import com.arifrgilang.presentation.ui.MainViewModelImpl
 import com.arifrgilang.presentation.ui.dashboard.DashboardRvAdapter
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModel
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModelImpl
+import com.arifrgilang.presentation.ui.itemdetail.ItemDetailViewModel
+import com.arifrgilang.presentation.ui.itemdetail.ItemDetailViewModelImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -31,6 +33,10 @@ val presentationModule = module {
 
     viewModel<MainViewModel> {
         MainViewModelImpl(get(), get(), get(), get())
+    }
+
+    viewModel<ItemDetailViewModel> {
+        ItemDetailViewModelImpl(get(), get())
     }
 
     single {

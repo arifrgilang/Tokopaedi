@@ -1,7 +1,9 @@
 package com.arifrgilang.presentation.ui.dashboard
 
 import android.os.Bundle
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arifrgilang.presentation.ui.MainActivity
 import com.arifrgilang.presentation.R
@@ -37,6 +39,7 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         viewModel.isLoadingProfile.observe(this, ::showLoadingProfile)
         viewModel.isError.observeEvent(this, ::showError)
         viewModel.clothesData.observe(this, ::onDataFetched)
+        viewModel.isLoadingClothes.observe(this, ::showLoadingClothes)
     }
 
     private fun onDataFetched(list: List<ItemUiModel>?) {
@@ -51,6 +54,11 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
     private fun showLoadingProfile(isLoading: Boolean) {
         binding.clUser.isVisible = !isLoading
         binding.pbUser.isVisible = isLoading
+    }
+
+    private fun showLoadingClothes(isLoading: Boolean) {
+//        binding.rvClothes.isInvisible = isLoading
+//        binding.pbUser.isInvisible = !isLoading
     }
 
     private fun showError(unit: Unit) {
@@ -107,7 +115,13 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
     }
 
     private fun navigateToDetail(itemId: String) {
-        requireContext().toast("ITEM CLICKED $itemId")
+        findNavController()
+            .navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToItemDetailFragment(
+                    itemId.toInt()
+                )
+            )
+//        requireContext().toast("ITEM CLICKED $itemId")
     }
 
     private fun setupChipGroupClothes() {
