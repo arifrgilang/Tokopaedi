@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,25 +8,40 @@
             type="com.arifrgilang.presentation.model.ItemUiModel" />
     </data>
 
-    <LinearLayout
-        android:id="@+id/ll_item_clothes"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item_clothes"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:imageUrl="@{item.itemPicUrl}"/>
-        <TextView
-            android:layout_width="match_parent"
+
+        app:cardCornerRadius="8dp">
+        <LinearLayout
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="@{item.itemName}"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="@{`$` + item.itemPrice}"/>
-    </LinearLayout>
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:imageUrl="@{item.itemPicUrl}"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{item.itemName}"
+
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{`$` + item.itemPrice}"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:maxLines="1"
+                android:layout_marginBottom="8dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

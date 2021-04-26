@@ -9,6 +9,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface PromoRepository {
     suspend fun postPromos(promos: List<PromoDomainModel>)
-    suspend fun getAllPromo(): Flow<List<PromoDomainModel>>
-    suspend fun getPromo(promoId: Int): Flow<PromoDomainModel>
+    suspend fun getAllPromo(): List<PromoDomainModel>
+    suspend fun getPromo(promoId: Int): PromoDomainModel
 }

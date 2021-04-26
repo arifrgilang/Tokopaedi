@@ -68,11 +68,12 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
              *   unique itemId (n) even after onDestroy()
              * - The minus 1 is because array starts from zero index
              */
-            Timber.d("Item Clicked")
+
             val index = (checkedId%clothesList.size)-1
             val filteredIndex = if(index<0) clothesList.size-1 else index
-            clothesList[filteredIndex].let { status ->
-                currentCategory = status
+            Timber.d("Item Clicked $filteredIndex")
+            clothesList[filteredIndex].let { category ->
+                currentCategory = category
                 viewModel.getClothesWithCategory(currentCategory)
             }
         }

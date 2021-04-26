@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
  * Created by arifrgilang on 4/25/2021
  */
 interface GetItemsUseCase {
-    suspend fun execute(): Flow<List<ItemDomainModel>>
+    suspend fun execute(): List<ItemDomainModel>
 }
 
 class GetItemsUseCaseImpl(
     private val itemRepository: ItemRepository
 ) : GetItemsUseCase {
-    override suspend fun execute(): Flow<List<ItemDomainModel>> =
+    override suspend fun execute(): List<ItemDomainModel> =
         itemRepository.getAllItem()
 }

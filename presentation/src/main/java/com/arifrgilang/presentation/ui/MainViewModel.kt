@@ -32,8 +32,8 @@ abstract class MainViewModel : ViewModel() {
 
 class MainViewModelImpl(
     private val itemDomainMapper: ItemDomainMapper,
-//    private val promoDomainMapper: PromoDomainMapper,
-//    private val postPromoUseCase: PostPromoUseCase,
+    private val promoDomainMapper: PromoDomainMapper,
+    private val postPromoUseCase: PostPromoUseCase,
     private val postItemsUseCase: PostItemsUseCase
 ) : MainViewModel() {
 
@@ -95,28 +95,28 @@ class MainViewModelImpl(
 
         Timber.d(itemList.toString())
 
-//        val promoItems = mutableListOf(
-//            itemList.take(10),
-//            itemList.takeLast(10)
-//        )
+        val promoItems = mutableListOf(
+            itemList.take(10),
+            itemList.takeLast(10)
+        )
 
-//        val promoList = mutableListOf<PromoUiModel>()
+        val promoList = mutableListOf<PromoUiModel>()
 
-//        for (index in itemId.indices) {
-//            promoList.add(
-//                PromoUiModel(
-//                    promoId[index].toInt(),
-//                    promoName[index],
-//                    promoCreativeName[index],
-//                    promoCreativeSlot[index],
-//                    promoLocationId[index],
-//                    promoItems[index]
-//                )
-//            )
-//        }
+        for (index in promoId.indices) {
+            promoList.add(
+                PromoUiModel(
+                    promoId[index].toInt(),
+                    promoName[index],
+                    promoCreativeName[index],
+                    promoCreativeSlot[index],
+                    promoLocationId[index],
+                    promoItems[index]
+                )
+            )
+        }
 
         postItemList(itemList)
-//        postPromoList(promoList)
+        postPromoList(promoList)
     }
 
     private fun postItemList(itemList: List<ItemUiModel>) {
@@ -129,13 +129,13 @@ class MainViewModelImpl(
         }
     }
 
-//    private fun postPromoList(promoList: List<PromoUiModel>) {
-//        viewModelScope.launch(errorHandler) {
-//            _isLoading.value = true
-//            postPromoUseCase.execute(
-//                promoList.map { promoDomainMapper.mapUiToDomain(it) }
-//            )
-//            _isLoading.value = false
-//        }
-//    }
+    private fun postPromoList(promoList: List<PromoUiModel>) {
+        viewModelScope.launch(errorHandler) {
+            _isLoading.value = true
+            postPromoUseCase.execute(
+                promoList.map { promoDomainMapper.mapUiToDomain(it) }
+            )
+            _isLoading.value = false
+        }
+    }
 }

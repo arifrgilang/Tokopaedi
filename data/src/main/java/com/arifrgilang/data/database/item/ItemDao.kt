@@ -12,14 +12,14 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ItemDao {
     @Insert
-    fun insertAll(items: List<ItemDataModel>)
+    suspend fun insertAll(items: List<ItemDataModel>)
 
     @Query("SELECT * FROM ITEM")
-    fun getAllItem(): Flow<List<ItemDataModel>>
+    suspend fun getAllItem(): List<ItemDataModel>
 
     @Query("SELECT * FROM ITEM WHERE id = :itemId")
-    fun getItem(itemId: Int): Flow<ItemDataModel>
+    suspend fun getItem(itemId: Int): ItemDataModel
 
     @Query("SELECT * FROM ITEM WHERE ITEM_CATEGORY = :itemCategory")
-    fun getItemWithCategory(itemCategory: String?): Flow<List<ItemDataModel>>
+    suspend fun getItemWithCategory(itemCategory: String?): List<ItemDataModel>
 }

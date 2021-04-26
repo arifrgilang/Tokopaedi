@@ -3,18 +3,19 @@ package com.arifrgilang.domain.interactor.item
 import com.arifrgilang.domain.model.ItemDomainModel
 import com.arifrgilang.domain.repository.ItemRepository
 import kotlinx.coroutines.flow.Flow
+import sun.rmi.runtime.Log
 
 
 /**
  * Created by arifrgilang on 4/25/2021
  */
 interface GetItemWithCategoryUseCase {
-    suspend fun execute(itemCategory: String) : Flow<List<ItemDomainModel>>
+    suspend fun execute(itemCategory: String) : List<ItemDomainModel>
 }
 
 class GetItemWithCategoryUseCaseImpl(
     private val itemRepository: ItemRepository
 ) : GetItemWithCategoryUseCase {
-    override suspend fun execute(itemCategory: String): Flow<List<ItemDomainModel>> =
+    override suspend fun execute(itemCategory: String): List<ItemDomainModel> =
         itemRepository.getItemWithCategory(itemCategory)
 }

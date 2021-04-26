@@ -30,7 +30,7 @@ val presentationModule = module {
     }
 
     viewModel<MainViewModel> {
-        MainViewModelImpl(get(), get())
+        MainViewModelImpl(get(), get(), get(), get())
     }
 
     single {

@@ -24,13 +24,9 @@ class PromoRepositoryImpl(
         )
     }
 
-    override suspend fun getAllPromo(): Flow<List<PromoDomainModel>> =
-        promoDao.getAll().transform { list ->
-            list.map { model ->
-                promoMapper.mapDataToDomain(model)
-            }
-        }
+    override suspend fun getAllPromo(): List<PromoDomainModel> =
+        promoDao.getAll().map { promoMapper.mapDataToDomain(it) }
 
-    override suspend fun getPromo(promoId: Int): Flow<PromoDomainModel> =
-        promoDao.getPromo(promoId).map { promoMapper.mapDataToDomain(it) }
+    override suspend fun getPromo(promoId: Int): PromoDomainModel =
+        promoMapper.mapDataToDomain(promoDao.getPromo(promoId))
 }

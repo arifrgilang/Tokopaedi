@@ -68,16 +68,11 @@
         <item>Tulle Tutu Skirt for Toddler Girls</item>
     </string-array>
     <string-array name="item_category">
-        <item>Top &amp; Tees</item>
-        <item>Top &amp; Tees</item>
-        <item>Top &amp; Tees</item>
-        <item>Top &amp; Tees</item>
-        <item>Top &amp; Tees</item>
-        <item>Bottoms &amp; Leggings</item>
-        <item>Bottoms &amp; Leggings</item>
-        <item>Bottoms &amp; Leggings</item>
-        <item>Bottoms &amp; Leggings</item>
-        <item>Bottoms &amp; Leggings</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
+        <item>Tops &amp; Tees</item>
         <item>Pajamas &amp; Socks</item>
         <item>Pajamas &amp; Socks</item>
         <item>Pajamas &amp; Socks</item>
@@ -88,6 +83,11 @@
         <item>Dresses &amp; Jumpsuits</item>
         <item>Dresses &amp; Jumpsuits</item>
         <item>Dresses &amp; Jumpsuits</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
+        <item>Bottoms &amp; Leggings</item>
     </string-array>
     <string-array name="item_variant">
         <item>Girl</item>

@@ -9,11 +9,8 @@ import com.arifrgilang.presentation.mapper.ItemDomainMapper
 import com.arifrgilang.presentation.model.ItemUiModel
 import com.arifrgilang.presentation.model.UserUiModel
 import com.arifrgilang.presentation.util.event.Event
-import com.arifrgilang.presentation.util.event.eventOf
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -78,21 +75,13 @@ class DashboardViewModelImpl(
     }
 
     override fun getClothesWithCategory(category: String) {
-        Timber.d("Get clothes with category")
+        Timber.d("Get clothes with category $category")
         viewModelScope.launch(errorHandler) {
             _isLoadingClothes.value = true
-            getItemWithCategoryUseCase.execute(
-                category
-            ).catch { throwable ->
-                Timber.e(throwable.toString())
-                _isError.postValue(eventOf(Unit))
-                _isLoadingClothes.value = false
-            }.collect { clothes ->
-                val clothesData = clothes.map { itemDomainMapper.mapDomainToUi(it) }
-                Timber.d(clothesData.toString())
-                _clothesData.postValue(clothesData)
-                _isLoadingClothes.value = false
-            }
+            val rawData = getItemWithCategoryUseCase.execute(category)
+            val clothesData = rawData.map { itemDomainMapper.mapDomainToUi(it) }
+            _clothesData.postValue(clothesData)
+            _isLoadingClothes.value = false
         }
     }
 }

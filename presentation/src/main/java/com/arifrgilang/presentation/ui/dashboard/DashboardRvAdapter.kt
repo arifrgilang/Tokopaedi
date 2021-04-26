@@ -6,6 +6,7 @@ import com.arifrgilang.presentation.R
 import com.arifrgilang.presentation.databinding.ItemClothesBinding
 import com.arifrgilang.presentation.model.ItemUiModel
 import com.arifrgilang.presentation.util.base.BaseRecyclerAdapter
+import timber.log.Timber
 
 
 /**
@@ -18,7 +19,7 @@ class DashboardRvAdapter(
     inner class ViewHolder(view: ItemClothesBinding) : BaseViewHolder(view) {
         override fun onBind(model: ItemUiModel) {
             view.item = model
-            view.llItemClothes.setOnClickListener {
+            view.cvItemClothes.setOnClickListener {
                 getCallback()?.onRecyclerItemClicked(model.id.toString())
             }
         }

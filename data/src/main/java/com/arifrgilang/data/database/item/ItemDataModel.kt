@@ -3,11 +3,13 @@ package com.arifrgilang.data.database.item
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
 
 
 /**
  * Created by arifrgilang on 4/25/2021
  */
+@JsonClass(generateAdapter = true)
 @Entity(tableName = "ITEM")
 data class ItemDataModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

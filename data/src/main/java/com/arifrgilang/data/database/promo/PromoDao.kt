@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PromoDao {
     @Insert
-    fun insertAll(promos: List<PromoDataModel>)
+    suspend fun insertAll(promos: List<PromoDataModel>)
 
     @Query("SELECT * FROM PROMO")
-    fun getAll(): Flow<List<PromoDataModel>>
+    suspend fun getAll(): List<PromoDataModel>
 
     @Query("SELECT * FROM PROMO WHERE id = :promoId")
-    fun getPromo(promoId: Int): Flow<PromoDataModel>
+    suspend fun getPromo(promoId: Int): PromoDataModel
 }

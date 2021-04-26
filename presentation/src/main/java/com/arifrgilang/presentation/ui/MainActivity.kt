@@ -68,17 +68,23 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     }
 
     private fun navigateToDashboard() {
-        navHostFragment.findNavController().navigate(
-            LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
-        )
-        toast("Logged in successfully")
+        val currentDestId = navHostFragment.findNavController().currentDestination?.id
+        if(currentDestId == R.id.loginFragment) {
+            navHostFragment.findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
+            )
+            toast("Logged in successfully")
+        }
     }
 
     private fun navigateToLogin() {
-        navHostFragment.findNavController().navigate(
-            DashboardFragmentDirections.actionDashboardFragmentToLoginFragment()
-        )
-        toast("Logged out successfully")
+        val currentDestId = navHostFragment.findNavController().currentDestination?.id
+        if(currentDestId == R.id.dashboardFragment) {
+            navHostFragment.findNavController().navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToLoginFragment()
+            )
+            toast("Logged out successfully")
+        }
     }
 
     override fun onResume() {

@@ -22,9 +22,6 @@ abstract class BaseRecyclerAdapter<
     private var inflater: LayoutInflater = LayoutInflater.from(context)
     private var recyclerCallback: AdapterOnClick? = null
 
-    private val activity: Activity?
-        get() = context as? Activity
-
     override fun onBindViewHolder(holder: VH, position: Int) =
         holder.onBind(modelList[position]) // reversed order insert
 
@@ -50,32 +47,26 @@ abstract class BaseRecyclerAdapter<
     fun insertAndNotify(models: List<Model>?) {
         if (models != null && models.isNotEmpty()) {
             modelList.addAll(models)
-            activity?.runOnUiThread{
-                if (modelList.size - models.size == 0) {
-                    notifyDataSetChanged()
-                } else {
-                    notifyItemRangeInserted(modelList.size - models.size, models.size)
-                }
+            if (modelList.size - models.size == 0) {
+                notifyDataSetChanged()
+            } else {
+                notifyItemRangeInserted(modelList.size - models.size, models.size)
             }
         }
     }
 
     fun insertAndNotify(model: Model) {
         modelList.add(model)
-        activity?.runOnUiThread{
-            if (modelList.size == 1) {
-                notifyDataSetChanged()
-            } else {
-                notifyItemRangeInserted(modelList.size - 1, 1)
-            }
+        if (modelList.size == 1) {
+            notifyDataSetChanged()
+        } else {
+            notifyItemRangeInserted(modelList.size - 1, 1)
         }
     }
 
     fun clearAndNotify() {
         modelList.clear()
-        activity?.runOnUiThread {
-            notifyDataSetChanged()
-        }
+        notifyDataSetChanged()
     }
 
     abstract inner class BaseViewHolder (val view: VB): RecyclerView.ViewHolder(view.root) {
