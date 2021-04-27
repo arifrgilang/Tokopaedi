@@ -68,6 +68,7 @@ class CheckoutFragment : BaseBindingFragment<FragmentCheckoutBinding>() {
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
         }
+//        binding
     }
 
     private fun negativeCallback() = object : BaseRecyclerAdapter.AdapterOnClick {
@@ -100,6 +101,15 @@ class CheckoutFragment : BaseBindingFragment<FragmentCheckoutBinding>() {
         }
     }
 
+    private fun detailCallback() = object: BaseRecyclerAdapter.AdapterOnClick {
+        override fun onRecyclerItemClicked(extra: String) {
+            findNavController().navigate(
+                CheckoutFragmentDirections
+                    .actionCheckoutFragmentToCheckoutDetailFragment(extra.toInt())
+            )
+        }
+    }
+
     private fun initRecyclerView() {
         with(binding.rvCheckout) {
             layoutManager = LinearLayoutManager(requireContext())
@@ -109,6 +119,9 @@ class CheckoutFragment : BaseBindingFragment<FragmentCheckoutBinding>() {
                 )
                 setPositiveCallback(
                     positiveCallback()
+                )
+                setDetailCallback(
+                    detailCallback()
                 )
             }
             addItemDecoration(

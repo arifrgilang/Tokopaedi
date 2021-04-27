@@ -9,5 +9,6 @@ import com.arifrgilang.domain.model.CheckoutDomainModel
 interface CheckoutRepository {
     suspend fun postCheckout(item: CheckoutDomainModel)
     suspend fun deleteWithId(checkoutId: Int)
+    suspend fun getCheckoutWithId(checkoutId: Int): CheckoutDomainModel
     suspend fun getCheckoutWithEmail(userEmail: String): List<CheckoutDomainModel>
 }

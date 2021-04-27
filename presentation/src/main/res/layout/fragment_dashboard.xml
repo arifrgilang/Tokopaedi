@@ -172,8 +172,8 @@
                         android:layout_marginBottom="16dp">
                         <ImageView
                             android:id="@+id/iv_cart"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
                             android:src="@drawable/ic_cart"
 
                             app:layout_constraintTop_toTopOf="parent"
@@ -192,8 +192,8 @@
 
                         <ImageView
                             android:id="@+id/iv_checkout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
                             android:src="@drawable/ic_checkout"
 
                             app:layout_constraintTop_toTopOf="parent"
@@ -212,8 +212,8 @@
 
                         <ImageView
                             android:id="@+id/iv_history"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
                             android:src="@drawable/ic_history"
 
                             app:layout_constraintTop_toTopOf="parent"

@@ -90,9 +90,25 @@
     <fragment
         android:id="@+id/checkoutFragment"
         android:name="com.arifrgilang.presentation.ui.checkout.CheckoutFragment"
-        android:label="CheckoutFragment" />
+        android:label="CheckoutFragment" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_checkoutDetailFragment"
+            app:destination="@id/checkoutDetailFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.arifrgilang.presentation.ui.history.HistoryFragment"
         android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/checkoutDetailFragment"
+        android:name="com.arifrgilang.presentation.ui.checkoutdetail.CheckoutDetailFragment"
+        android:label="CheckoutDetailFragment" >
+        <argument
+            android:name="checkoutId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

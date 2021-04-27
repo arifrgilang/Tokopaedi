@@ -16,9 +16,14 @@ class CheckoutRvAdapter(
     context: Context
 ) : BaseRecyclerAdapter<CheckoutUiModel, ItemCheckoutBinding, CheckoutRvAdapter.ViewHolder>(context) {
     private var callbackPay: OnPayClicked? = null
+    private var detailCallback: AdapterOnClick? = null
 
     fun setPositiveCallback(listener: OnPayClicked){
         callbackPay = listener
+    }
+
+    fun setDetailCallback(listener: AdapterOnClick) {
+        detailCallback = listener
     }
 
     inner class ViewHolder(view: ItemCheckoutBinding) : BaseViewHolder(view) {
@@ -31,6 +36,9 @@ class CheckoutRvAdapter(
             }
             view.btnChekoutPay.setOnClickListener {
                 callbackPay?.onAgree(model)
+            }
+            view.cvItemCheckout.setOnClickListener {
+                detailCallback?.onRecyclerItemClicked(model.id.toString())
             }
         }
     }

@@ -16,6 +16,9 @@ interface CheckoutDao {
     @Query("DELETE FROM CHECKOUT WHERE id = :checkoutId")
     suspend fun deleteWithId(checkoutId: Int)
 
+    @Query("SELECT * FROM CHECKOUT WHERE id = :checkoutId")
+    suspend fun getCheckoutWithId(checkoutId: Int): CheckoutDataModel
+
     @Query("SELECT * FROM CHECKOUT WHERE USER_EMAIL = :userEmail")
     suspend fun getCheckoutWithEmail(userEmail: String): List<CheckoutDataModel>
 }

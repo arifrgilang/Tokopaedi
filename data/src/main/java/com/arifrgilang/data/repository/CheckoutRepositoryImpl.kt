@@ -20,6 +20,10 @@ class CheckoutRepositoryImpl(
         checkoutDao.deleteWithId(checkoutId)
     }
 
+    override suspend fun getCheckoutWithId(checkoutId: Int): CheckoutDomainModel =
+        checkoutMapper.mapDataToDomain(checkoutDao.getCheckoutWithId(checkoutId))
+
+
     override suspend fun getCheckoutWithEmail(userEmail: String): List<CheckoutDomainModel> =
         checkoutDao.getCheckoutWithEmail(userEmail).map { items ->
             checkoutMapper.mapDataToDomain(items)

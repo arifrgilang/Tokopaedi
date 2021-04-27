@@ -64,6 +64,9 @@ val domainModule = module {
     single<PostCheckoutUseCase> {
         PostCheckoutUseCaseImpl(get())
     }
+    single<GetCheckoutWithIdUseCase> {
+        GetCheckoutWithIdUseCaseImpl(get())
+    }
 
     // History
     single<GetHistoryWithEmailUseCase> {
