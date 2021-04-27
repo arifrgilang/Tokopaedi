@@ -1,4 +1,4 @@
-package com.arifrgilang.presentation.util.view
+package com.arifrgilang.presentation.ui.dashboard
 
 import android.app.AlertDialog
 import android.app.Dialog

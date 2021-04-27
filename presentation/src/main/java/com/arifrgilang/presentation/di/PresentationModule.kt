@@ -3,6 +3,9 @@ package com.arifrgilang.presentation.di
 import com.arifrgilang.presentation.mapper.*
 import com.arifrgilang.presentation.ui.MainViewModel
 import com.arifrgilang.presentation.ui.MainViewModelImpl
+import com.arifrgilang.presentation.ui.cart.CartRvAdapter
+import com.arifrgilang.presentation.ui.cart.CartViewModel
+import com.arifrgilang.presentation.ui.cart.CartViewModelImpl
 import com.arifrgilang.presentation.ui.dashboard.DashboardRvAdapter
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModel
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModelImpl
@@ -53,6 +56,9 @@ val presentationModule = module {
     viewModel<PromoDetailViewModel> {
         PromoDetailViewModelImpl(get(), get())
     }
+    viewModel<CartViewModel> {
+        CartViewModelImpl(get(), get(), get(), get(), get())
+    }
 
     // RecyclerView Adapter
     single {
@@ -60,5 +66,8 @@ val presentationModule = module {
     }
     single {
         PromoDetailRvAdapter(get())
+    }
+    single {
+        CartRvAdapter(get())
     }
 }

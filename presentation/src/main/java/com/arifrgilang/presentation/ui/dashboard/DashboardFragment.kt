@@ -1,7 +1,6 @@
 package com.arifrgilang.presentation.ui.dashboard
 
 import android.os.Bundle
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,6 @@ import com.arifrgilang.presentation.util.base.BaseBindingFragment
 import com.arifrgilang.presentation.util.base.BaseRecyclerAdapter
 import com.arifrgilang.presentation.util.event.observeEvent
 import com.arifrgilang.presentation.util.view.toast
-import com.arifrgilang.presentation.util.view.LogoutDialogFragment
 import com.google.android.material.chip.Chip
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -96,6 +94,9 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         binding.ivPromo2.setOnClickListener {
             navigateToPromo(2)
         }
+        binding.ivCart.setOnClickListener {
+            navigateToCart()
+        }
         binding.cgClothes.setOnCheckedChangeListener { _, checkedId ->
             /*
              * - The index need to be modded by statusList.size because CardGroup is generating
@@ -138,6 +139,13 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
                 )
             )
         }
+    }
+
+    private fun navigateToCart() {
+        findNavController()
+            .navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToCartFragment()
+            )
     }
 
     private fun navigateToPromo(promoId: Int) {

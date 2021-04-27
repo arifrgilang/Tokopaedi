@@ -44,7 +44,11 @@
             app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_dashboardFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_dashboardFragment_to_checkoutFragment"
             app:destination="@id/checkoutFragment" />
