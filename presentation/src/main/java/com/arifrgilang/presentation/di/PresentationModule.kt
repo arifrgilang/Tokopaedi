@@ -6,6 +6,9 @@ import com.arifrgilang.presentation.ui.MainViewModelImpl
 import com.arifrgilang.presentation.ui.cart.CartRvAdapter
 import com.arifrgilang.presentation.ui.cart.CartViewModel
 import com.arifrgilang.presentation.ui.cart.CartViewModelImpl
+import com.arifrgilang.presentation.ui.checkout.CheckoutRvAdapter
+import com.arifrgilang.presentation.ui.checkout.CheckoutViewModel
+import com.arifrgilang.presentation.ui.checkout.CheckoutViewModelImpl
 import com.arifrgilang.presentation.ui.dashboard.DashboardRvAdapter
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModel
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModelImpl
@@ -59,6 +62,9 @@ val presentationModule = module {
     viewModel<CartViewModel> {
         CartViewModelImpl(get(), get(), get(), get(), get())
     }
+    viewModel<CheckoutViewModel> {
+        CheckoutViewModelImpl(get(), get(), get(), get(), get())
+    }
 
     // RecyclerView Adapter
     single {
@@ -69,5 +75,8 @@ val presentationModule = module {
     }
     single {
         CartRvAdapter(get())
+    }
+    single {
+        CheckoutRvAdapter(get())
     }
 }

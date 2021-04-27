@@ -1,4 +1,4 @@
-package com.arifrgilang.presentation.ui.cart
+package com.arifrgilang.presentation.ui.checkout
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -7,19 +7,18 @@ import android.view.LayoutInflater
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import com.arifrgilang.presentation.R
-import com.arifrgilang.presentation.ui.dashboard.LogoutDialogFragment
 
 
 /**
  * Created by arifrgilang on 4/27/2021
  */
-class ConfirmCheckoutDialogFragment(
+class ConfirmRemoveDialogFragment(
     private val callback: DialogCallback
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater
             .from(requireContext())
-            .inflate(R.layout.dialog_confirm_checkout, null)
+            .inflate(R.layout.dialog_remove_checkout, null)
             .apply {
                 val btnYes = this.findViewById<Button>(R.id.btn_confirm_check_yes)
                 val btnNo = this.findViewById<Button>(R.id.btn_confirm_check_no)

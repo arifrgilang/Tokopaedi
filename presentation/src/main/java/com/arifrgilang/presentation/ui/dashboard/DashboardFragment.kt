@@ -97,6 +97,9 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         binding.ivCart.setOnClickListener {
             navigateToCart()
         }
+        binding.ivCheckout.setOnClickListener {
+            navigateToCheckout()
+        }
         binding.cgClothes.setOnCheckedChangeListener { _, checkedId ->
             /*
              * - The index need to be modded by statusList.size because CardGroup is generating
@@ -139,6 +142,13 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
                 )
             )
         }
+    }
+
+    private fun navigateToCheckout() {
+        findNavController()
+            .navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToCheckoutFragment()
+            )
     }
 
     private fun navigateToCart() {

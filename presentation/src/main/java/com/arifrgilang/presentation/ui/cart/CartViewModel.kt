@@ -5,7 +5,6 @@ import com.arifrgilang.domain.interactor.cart.DelCartWithEmailUseCase
 import com.arifrgilang.domain.interactor.cart.DelCartWithIdUseCase
 import com.arifrgilang.domain.interactor.cart.GetCartWithEmail
 import com.arifrgilang.domain.interactor.checkout.PostCheckoutUseCase
-import com.arifrgilang.domain.model.CartDomainModel
 import com.arifrgilang.domain.model.CheckoutDomainModel
 import com.arifrgilang.presentation.mapper.CartDomainMapper
 import com.arifrgilang.presentation.model.CartUiModel
@@ -57,11 +56,13 @@ class CartViewModelImpl(
     override val cartItems: LiveData<List<CartUiModel>>
         get() = _cartItems
 
-    private val isCheckoutClickedChannel = ConflatedBroadcastChannel<Event<Boolean>>()
-    override val isCheckoutClicked: LiveData<Event<Boolean>> = isCheckoutClickedChannel.asFlow().asLiveData()
+    private val _isCheckoutClickedChannel = ConflatedBroadcastChannel<Event<Boolean>>()
+    override val isCheckoutClicked: LiveData<Event<Boolean>> =
+        _isCheckoutClickedChannel.asFlow().asLiveData()
 
-    private val isCartDeletedChannel = ConflatedBroadcastChannel<Event<Boolean>>()
-    override val isItemCartDeleted: LiveData<Event<Boolean>> = isCartDeletedChannel.asFlow().asLiveData()
+    private val _isCartDeletedChannel = ConflatedBroadcastChannel<Event<Boolean>>()
+    override val isItemCartDeleted: LiveData<Event<Boolean>> =
+        _isCartDeletedChannel.asFlow().asLiveData()
 
     private val _isLoading = MediatorLiveData<Boolean>()
     override val isLoading: LiveData<Boolean>
@@ -101,7 +102,7 @@ class CartViewModelImpl(
                 )
             )
             delCartWithEmail.execute(user.email!!)
-            isCheckoutClickedChannel.offer(eventOf(true))
+            _isCheckoutClickedChannel.offer(eventOf(true))
             _isLoadingButton.value = false
         }
     }
@@ -110,7 +111,7 @@ class CartViewModelImpl(
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
             delCartWithId.execute(itemId.toInt())
-            isCartDeletedChannel.offer(eventOf(true))
+            _isCartDeletedChannel.offer(eventOf(true))
             _isLoading.value = false
         }
     }

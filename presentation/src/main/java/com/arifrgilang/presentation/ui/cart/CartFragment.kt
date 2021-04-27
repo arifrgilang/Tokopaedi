@@ -55,7 +55,7 @@ class CartFragment : BaseBindingFragment<FragmentCartBinding>() {
     }
 
     private fun onLoading(isLoading: Boolean) {
-        binding.rvCheckout.isVisible = !isLoading
+        binding.rvCart.isVisible = !isLoading
         binding.pbCheckout.isVisible = isLoading
     }
 
@@ -110,7 +110,7 @@ class CartFragment : BaseBindingFragment<FragmentCartBinding>() {
     }
 
     private fun initRecyclerView() {
-        with(binding.rvCheckout) {
+        with(binding.rvCart) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = rvAdapter.apply {
                 setOnItemClickListener(
