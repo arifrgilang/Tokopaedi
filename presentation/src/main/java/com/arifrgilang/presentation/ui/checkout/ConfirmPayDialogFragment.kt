@@ -1,4 +1,4 @@
-package com.arifrgilang.presentation.util.view
+package com.arifrgilang.presentation.ui.checkout
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -10,18 +10,18 @@ import com.arifrgilang.presentation.R
 
 
 /**
- * Created by arifrgilang on 4/24/2021
+ * Created by arifrgilang on 4/27/2021
  */
-class LogoutDialogFragment(
+class ConfirmPayDialogFragment(
     private val callback: DialogCallback
 ) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater
             .from(requireContext())
-            .inflate(R.layout.dialog_logout, null)
+            .inflate(R.layout.dialog_confirm_pay, null)
             .apply {
-                val btnYes = this.findViewById<Button>(R.id.btn_logout_yes)
-                val btnNo = this.findViewById<Button>(R.id.btn_logout_no)
+                val btnYes = this.findViewById<Button>(R.id.btn_confirm_check_yes)
+                val btnNo = this.findViewById<Button>(R.id.btn_confirm_check_no)
 
                 btnYes.setOnClickListener {
                     callback.isAgree()
