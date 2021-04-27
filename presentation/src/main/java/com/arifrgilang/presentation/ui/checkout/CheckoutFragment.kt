@@ -68,7 +68,6 @@ class CheckoutFragment : BaseBindingFragment<FragmentCheckoutBinding>() {
         binding.btnBack.setOnClickListener {
             findNavController().navigateUp()
         }
-//        binding
     }
 
     private fun negativeCallback() = object : BaseRecyclerAdapter.AdapterOnClick {

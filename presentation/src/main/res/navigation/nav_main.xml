@@ -58,7 +58,11 @@
             app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_dashboardFragment_to_historyFragment"
-            app:destination="@id/historyFragment" />
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
@@ -102,13 +106,29 @@
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.arifrgilang.presentation.ui.history.HistoryFragment"
-        android:label="HistoryFragment" />
+        android:label="HistoryFragment" >
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailFragment"
+            app:destination="@id/historyDetailFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/checkoutDetailFragment"
         android:name="com.arifrgilang.presentation.ui.checkoutdetail.CheckoutDetailFragment"
         android:label="CheckoutDetailFragment" >
         <argument
             android:name="checkoutId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.arifrgilang.presentation.ui.historydetail.HistoryDetailFragment"
+        android:label="HistoryDetailFragment" >
+        <argument
+            android:name="historyId"
             app:argType="integer" />
     </fragment>
 </navigation>

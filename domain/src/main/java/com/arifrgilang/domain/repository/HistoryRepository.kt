@@ -8,5 +8,6 @@ import com.arifrgilang.domain.model.HistoryDomainModel
  */
 interface HistoryRepository {
     suspend fun insert(item: HistoryDomainModel)
+    suspend fun getHistoryWithId(historyId: Int): HistoryDomainModel
     suspend fun getHistoryWithEmail(userEmail: String): List<HistoryDomainModel>
 }

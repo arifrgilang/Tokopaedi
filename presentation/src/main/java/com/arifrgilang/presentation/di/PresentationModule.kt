@@ -15,6 +15,12 @@ import com.arifrgilang.presentation.ui.checkoutdetail.CheckoutDetailViewModelImp
 import com.arifrgilang.presentation.ui.dashboard.DashboardRvAdapter
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModel
 import com.arifrgilang.presentation.ui.dashboard.DashboardViewModelImpl
+import com.arifrgilang.presentation.ui.history.HistoryRvAdapter
+import com.arifrgilang.presentation.ui.history.HistoryViewModel
+import com.arifrgilang.presentation.ui.history.HistoryViewModelImpl
+import com.arifrgilang.presentation.ui.historydetail.HistoryDetailRvAdapter
+import com.arifrgilang.presentation.ui.historydetail.HistoryDetailViewModel
+import com.arifrgilang.presentation.ui.historydetail.HistoryDetailViewModelImpl
 import com.arifrgilang.presentation.ui.itemdetail.ItemDetailViewModel
 import com.arifrgilang.presentation.ui.itemdetail.ItemDetailViewModelImpl
 import com.arifrgilang.presentation.ui.promodetail.PromoDetailRvAdapter
@@ -71,6 +77,12 @@ val presentationModule = module {
     viewModel<CheckoutDetailViewModel> {
         CheckoutDetailViewModelImpl(get(), get())
     }
+    viewModel<HistoryViewModel> {
+        HistoryViewModelImpl(get(), get())
+    }
+    viewModel<HistoryDetailViewModel> {
+        HistoryDetailViewModelImpl(get(), get())
+    }
 
     // RecyclerView Adapter
     single {
@@ -87,5 +99,11 @@ val presentationModule = module {
     }
     single {
         CheckoutDetailRvAdapter(get())
+    }
+    single {
+        HistoryRvAdapter(get())
+    }
+    single {
+        HistoryDetailRvAdapter(get())
     }
 }

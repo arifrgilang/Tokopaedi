@@ -2,10 +2,7 @@ package com.arifrgilang.domain.di
 
 import com.arifrgilang.domain.interactor.cart.*
 import com.arifrgilang.domain.interactor.checkout.*
-import com.arifrgilang.domain.interactor.history.GetHistoryWithEmailUseCase
-import com.arifrgilang.domain.interactor.history.GetHistoryWithEmailUseCaseImpl
-import com.arifrgilang.domain.interactor.history.PostHistoryUseCase
-import com.arifrgilang.domain.interactor.history.PostHistoryUseCaseImpl
+import com.arifrgilang.domain.interactor.history.*
 import com.arifrgilang.domain.interactor.item.*
 import com.arifrgilang.domain.interactor.promo.*
 import org.koin.dsl.module
@@ -74,5 +71,8 @@ val domainModule = module {
     }
     single<PostHistoryUseCase> {
         PostHistoryUseCaseImpl(get())
+    }
+    single<GetHistoryWithIdUseCase>() {
+        GetHistoryWithIdUseCaseImpl(get())
     }
 }

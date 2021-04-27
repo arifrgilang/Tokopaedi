@@ -17,6 +17,9 @@ class HistoryRepositoryImpl(
         historyDao.insert(historyMapper.mapDomainToData(item))
     }
 
+    override suspend fun getHistoryWithId(historyId: Int): HistoryDomainModel =
+        historyMapper.mapDataToDomain(historyDao.getHistoryWithId(historyId))
+
     override suspend fun getHistoryWithEmail(userEmail: String): List<HistoryDomainModel> =
         historyDao.getHistoryWithEmail(userEmail).map { items ->
             historyMapper.mapDataToDomain(items)

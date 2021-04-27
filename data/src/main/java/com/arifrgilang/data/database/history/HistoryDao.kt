@@ -14,6 +14,9 @@ interface HistoryDao {
     @Insert
     suspend fun insert(item: HistoryDataModel)
 
+    @Query("SELECT * FROM HISTORY WHERE id = :historyId")
+    suspend fun getHistoryWithId(historyId: Int): HistoryDataModel
+
     @Query("SELECT * FROM HISTORY WHERE USER_EMAIL = :userEmail")
     suspend fun getHistoryWithEmail(userEmail: String): List<HistoryDataModel>
 }
