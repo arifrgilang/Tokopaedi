@@ -11,6 +11,8 @@ import com.arifrgilang.presentation.ui.itemdetail.ItemDetailViewModelImpl
 import com.arifrgilang.presentation.ui.promodetail.PromoDetailRvAdapter
 import com.arifrgilang.presentation.ui.promodetail.PromoDetailViewModel
 import com.arifrgilang.presentation.ui.promodetail.PromoDetailViewModelImpl
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,6 +20,8 @@ import org.koin.dsl.module
 /**
  * Created by arifrgilang on 4/24/2021
  */
+@FlowPreview
+@ExperimentalCoroutinesApi
 val presentationModule = module {
     // UI Mapper
     single<ItemDomainMapper> {
@@ -44,7 +48,7 @@ val presentationModule = module {
         MainViewModelImpl(get(), get(), get(), get())
     }
     viewModel<ItemDetailViewModel> {
-        ItemDetailViewModelImpl(get(), get())
+        ItemDetailViewModelImpl(get(), get(), get())
     }
     viewModel<PromoDetailViewModel> {
         PromoDetailViewModelImpl(get(), get())

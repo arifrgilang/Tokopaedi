@@ -9,16 +9,17 @@
             type="com.arifrgilang.presentation.model.ItemUiModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         tools:context=".ui.itemdetail.ItemDetailFragment">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
 
+            android:layout_alignParentTop="true"
             android:background="@android:color/white"
             android:elevation="0dp"
             android:backgroundTint="@color/green_dark"
@@ -59,8 +60,12 @@
         </androidx.appcompat.widget.Toolbar>
 
         <ScrollView
+            android:id="@+id/sv_item_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+
+            android:layout_below="@id/toolbar"
+            android:layout_above="@id/rl_btn_cart">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -238,5 +243,38 @@
                 </LinearLayout>
             </RelativeLayout>
         </ScrollView>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/rl_btn_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:background="@android:color/white"
+            android:layout_alignParentBottom="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#F4F4F4"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_to_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add to Cart"
+
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:icon="@drawable/ic_cart"
+                app:iconGravity="textStart" />
+            <ProgressBar
+                android:id="@+id/pb_add_to_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </RelativeLayout>
 </layout>
