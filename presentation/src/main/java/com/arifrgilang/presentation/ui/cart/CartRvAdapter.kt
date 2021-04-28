@@ -23,8 +23,13 @@ class CartRvAdapter(
     inner class ViewHolder(view: ItemCartBinding) : BaseViewHolder(view) {
         override fun onBind(model: CartUiModel) {
             view.itemCart = model
+            /* Id and Index formatted like "$id $index"
+                 * Index is for logging the delete item to firebase
+                 * Id is for DetailFragment args
+                 */
+            val idAndIndex = model.id.toString() + " " + this.position
             view.ivDeleteFromCart.setOnClickListener {
-                getCallback()?.onRecyclerItemClicked(model.id.toString())
+                getCallback()?.onRecyclerItemClicked(idAndIndex)
             }
         }
     }

@@ -13,6 +13,7 @@ import com.arifrgilang.presentation.util.Constant.GOOGLE_SIGN_IN
 import com.arifrgilang.presentation.util.base.BaseBindingActivity
 import com.arifrgilang.presentation.util.view.toast
 import com.firebase.ui.auth.AuthUI
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -73,6 +74,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
             navHostFragment.findNavController().navigate(
                 LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
             )
+            logFirebaseLogin()
             toast("Logged in successfully")
         }
     }
@@ -104,5 +106,14 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
                 toast("Login failed")
             }
         }
+    }
+
+    private fun logFirebaseLogin() {
+        FirebaseAnalytics.getInstance(this)
+            .logEvent(
+                FirebaseAnalytics.Event.LOGIN, Bundle().apply {
+                    putString(FirebaseAnalytics.Param.METHOD, "Google")
+                }
+            )
     }
 }

@@ -27,8 +27,12 @@ class CheckoutDetailFragment : BaseBindingFragment<FragmentCheckoutDetailBinding
 
     override fun contentView(): Int = R.layout.fragment_checkout_detail
 
-    override fun setupData(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setViewModelObservers()
+    }
+
+    override fun setupData(savedInstanceState: Bundle?) {
         viewModel.getCheckoutItemsWithId(args.checkoutId)
     }
 

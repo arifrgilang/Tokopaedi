@@ -1,6 +1,7 @@
 package com.arifrgilang.presentation.ui
 
 import android.content.Context
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +15,7 @@ import com.arifrgilang.presentation.model.ItemUiModel
 import com.arifrgilang.presentation.model.PromoUiModel
 import com.arifrgilang.presentation.util.Constant.IS_DB_POPULATED
 import com.arifrgilang.presentation.util.event.Event
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.orhanobut.hawk.Hawk
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -24,10 +26,10 @@ import timber.log.Timber
  * Created by arifrgilang on 4/24/2021
  */
 abstract class MainViewModel : ViewModel() {
-    abstract fun populateDatabase(context: Context)
-
     abstract val isLoading: LiveData<Boolean>
     abstract val isError: LiveData<Event<Unit>>
+
+    abstract fun populateDatabase(context: Context)
 }
 
 class MainViewModelImpl(
