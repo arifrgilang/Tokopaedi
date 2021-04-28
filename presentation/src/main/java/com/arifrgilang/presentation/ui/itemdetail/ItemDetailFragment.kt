@@ -14,7 +14,10 @@ import com.arifrgilang.presentation.model.ItemUiModel
 import com.arifrgilang.presentation.util.base.BaseBindingFragment
 import com.arifrgilang.presentation.util.event.observeEvent
 import com.arifrgilang.presentation.util.view.toast
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class ItemDetailFragment : BaseBindingFragment<FragmentItemDetailBinding>() {
     private val args: ItemDetailFragmentArgs by navArgs()
@@ -23,8 +26,12 @@ class ItemDetailFragment : BaseBindingFragment<FragmentItemDetailBinding>() {
 
     override fun contentView(): Int = R.layout.fragment_item_detail
 
-    override fun setupData(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setViewModelObservers()
+    }
+
+    override fun setupData(savedInstanceState: Bundle?) {
         viewModel.getItemDetail(args.itemId)
     }
 
@@ -49,8 +56,28 @@ class ItemDetailFragment : BaseBindingFragment<FragmentItemDetailBinding>() {
     }
 
     private fun onDataFetched(data: ItemUiModel) {
+        logFirebaseViewItem(data)
         binding.item = data
         item = data
+    }
+
+    private fun logFirebaseViewItem(item: ItemUiModel) {
+        Timber.d("LogFirebaseViewItem")
+        val itemBundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.ITEM_ID, item.id.toString())
+            putString(FirebaseAnalytics.Param.ITEM_NAME, item.itemName)
+            putString(FirebaseAnalytics.Param.ITEM_CATEGORY, item.itemCategory)
+            putString(FirebaseAnalytics.Param.ITEM_VARIANT, item.itemVariant)
+            putString(FirebaseAnalytics.Param.ITEM_BRAND, item.itemBrand)
+            putDouble(FirebaseAnalytics.Param.PRICE, item.itemPrice!!.toDouble())
+        }
+
+        FirebaseAnalytics.getInstance(requireContext())
+            .logEvent(FirebaseAnalytics.Event.VIEW_ITEM) {
+                param(FirebaseAnalytics.Param.CURRENCY, "USD")
+                param(FirebaseAnalytics.Param.VALUE, item.itemPrice!!.toDouble())
+                param(FirebaseAnalytics.Param.ITEMS, arrayOf(itemBundle))
+            }
     }
 
     private fun showError(unit: Unit) {
@@ -68,6 +95,30 @@ class ItemDetailFragment : BaseBindingFragment<FragmentItemDetailBinding>() {
         }
         binding.btnAddToCart.setOnClickListener {
             viewModel.addToCart(item)
+            logFirebaseAddToCart()
         }
+    }
+
+    private fun logFirebaseAddToCart() {
+        Timber.d("LogFirebaseAddToCart")
+        val itemBundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.ITEM_ID, item.id.toString())
+            putString(FirebaseAnalytics.Param.ITEM_NAME, item.itemName)
+            putString(FirebaseAnalytics.Param.ITEM_CATEGORY, item.itemCategory)
+            putString(FirebaseAnalytics.Param.ITEM_VARIANT, item.itemVariant)
+            putString(FirebaseAnalytics.Param.ITEM_BRAND, item.itemBrand)
+            putDouble(FirebaseAnalytics.Param.PRICE, item.itemPrice!!.toDouble())
+        }
+
+        val itemCart = Bundle(itemBundle).apply {
+            putLong(FirebaseAnalytics.Param.QUANTITY, 1)
+        }
+
+        FirebaseAnalytics.getInstance(requireContext())
+            .logEvent(FirebaseAnalytics.Event.ADD_TO_CART) {
+                param(FirebaseAnalytics.Param.CURRENCY, "USD")
+                param(FirebaseAnalytics.Param.VALUE, item.itemPrice!!.toDouble())
+                param(FirebaseAnalytics.Param.ITEMS, arrayOf(itemCart))
+            }
     }
 }

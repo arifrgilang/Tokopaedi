@@ -15,6 +15,8 @@ import com.arifrgilang.presentation.util.base.BaseRecyclerAdapter
 import com.arifrgilang.presentation.util.event.observeEvent
 import com.arifrgilang.presentation.util.view.toast
 import com.google.android.material.chip.Chip
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -25,11 +27,16 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
     private val viewModel by viewModel<DashboardViewModel>()
     private val clothesList = mutableListOf("Tops & Tees", "Bottoms & Leggings", "Pajamas & Socks", "Dresses & Jumpsuits")
     private var currentCategory = "Tops & Tees"
+    private lateinit var currentList: List<ItemUiModel>
 
     override fun contentView(): Int = R.layout.fragment_dashboard
 
-    override fun setupData(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setViewModelObservers()
+    }
+
+    override fun setupData(savedInstanceState: Bundle?) {
         viewModel.getUserData()
     }
 
@@ -57,9 +64,12 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
         binding.cartCount = count
     }
 
-    private fun onDataFetched(list: List<ItemUiModel>?) {
+    private fun onDataFetched(list: List<ItemUiModel>) {
+        currentList = list
+        logFirebaseViewItemList(currentList)
         rvAdapter.clearAndNotify()
         rvAdapter.insertAndNotify(list)
+
     }
 
     private fun bindUserData(userData: UserUiModel) {
@@ -132,7 +142,8 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
                 setOnItemClickListener(
                     object: BaseRecyclerAdapter.AdapterOnClick {
                         override fun onRecyclerItemClicked(extra: String) {
-                            navigateToDetail(extra)
+                            logFirebaseSelectItem(extra.split(" ")[1])
+                            navigateToDetail(extra.split(" ")[0])
                         }
                     }
                 )
@@ -210,5 +221,53 @@ class DashboardFragment : BaseBindingFragment<FragmentDashboardBinding>() {
             requireActivity().supportFragmentManager,
             "Logout Dialog Fragment"
         )
+    }
+
+    private fun logFirebaseViewItemList(list: List<ItemUiModel>) {
+        Timber.d("LogFirebaseViewItemList")
+        val arrBundle = mutableListOf<Bundle>()
+
+        for(item in list){
+            val itemBundle = Bundle().apply {
+                putString(FirebaseAnalytics.Param.ITEM_ID, item.id.toString())
+                putString(FirebaseAnalytics.Param.ITEM_NAME, item.itemName)
+                putString(FirebaseAnalytics.Param.ITEM_CATEGORY, item.itemCategory)
+                putString(FirebaseAnalytics.Param.ITEM_VARIANT, item.itemVariant)
+                putString(FirebaseAnalytics.Param.ITEM_BRAND, item.itemBrand)
+                putDouble(FirebaseAnalytics.Param.PRICE, item.itemPrice!!.toDouble())
+            }
+            val itemBundleWithIndex = Bundle(itemBundle).apply {
+                putLong(FirebaseAnalytics.Param.INDEX, list.indexOf(item).toLong())
+            }
+            arrBundle.add(itemBundleWithIndex)
+        }
+
+        FirebaseAnalytics.getInstance(requireContext())
+            .logEvent(FirebaseAnalytics.Event.VIEW_ITEM_LIST) {
+                param(FirebaseAnalytics.Param.ITEM_LIST_ID, clothesList.indexOf(currentCategory).toString())
+                param(FirebaseAnalytics.Param.ITEM_LIST_NAME, currentCategory)
+                param(FirebaseAnalytics.Param.ITEMS, arrBundle.toTypedArray())
+            }
+    }
+
+    private fun logFirebaseSelectItem(extra: String) {
+        Timber.d("LogFirebaseSelectItem")
+        val item = currentList[extra.toInt()]
+
+        val itemBundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.ITEM_ID, item.id.toString())
+            putString(FirebaseAnalytics.Param.ITEM_NAME, item.itemName)
+            putString(FirebaseAnalytics.Param.ITEM_CATEGORY, item.itemCategory)
+            putString(FirebaseAnalytics.Param.ITEM_VARIANT, item.itemVariant)
+            putString(FirebaseAnalytics.Param.ITEM_BRAND, item.itemBrand)
+            putDouble(FirebaseAnalytics.Param.PRICE, item.itemPrice!!.toDouble())
+        }
+
+        FirebaseAnalytics.getInstance(requireContext())
+            .logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
+                param(FirebaseAnalytics.Param.ITEM_LIST_ID, clothesList.indexOf(currentCategory).toString())
+                param(FirebaseAnalytics.Param.ITEM_LIST_NAME, currentCategory)
+                param(FirebaseAnalytics.Param.ITEMS, arrayOf(itemBundle))
+            }
     }
 }

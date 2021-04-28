@@ -26,8 +26,12 @@ class HistoryFragment : BaseBindingFragment<FragmentHistoryBinding>() {
 
     override fun contentView(): Int = R.layout.fragment_history
 
-    override fun setupData(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setViewModelObservers()
+    }
+
+    override fun setupData(savedInstanceState: Bundle?) {
         viewModel.getHistoryItems()
     }
 

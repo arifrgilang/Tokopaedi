@@ -20,7 +20,12 @@ class DashboardRvAdapter(
         override fun onBind(model: ItemUiModel) {
             view.item = model
             view.cvItemClothes.setOnClickListener {
-                getCallback()?.onRecyclerItemClicked(model.id.toString())
+                /* Id and Index formatted like "$id $index"
+                 * Index is for logging the select item to firebase
+                 * Id is for DetailFragment args
+                 */
+                val idAndIndex = model.id.toString() + " " + this.position
+                getCallback()?.onRecyclerItemClicked(idAndIndex)
             }
         }
     }
