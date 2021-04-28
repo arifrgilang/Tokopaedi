@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item_count"
+            type="Integer" />
+        <variable
+            name="item_id"
+            type="Integer" />
+        <variable
+            name="item_price"
+            type="Integer" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_checkout_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{`Transaction ID: ` + item_id }"/>
+
+            <TextView
+                android:id="@+id/tv_checkout_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{`Total item: ` + item_count}"
+
+                android:layout_below="@id/tv_checkout_id"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/tv_checkout_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/tv_checkout_items"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="@{`Total price: $` + item_price}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:layout_below="@id/tv_checkout_price"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:id="@+id/btn_checkout_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Remove"
+
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:maxLines="1" />
+
+                <Button
+                    android:id="@+id/btn_chekout_pay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pay"
+
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/green_dark"
+                    android:maxLines="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

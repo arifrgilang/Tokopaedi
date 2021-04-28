@@ -1,0 +1,38 @@
+import dependencies.Dependencies
+
+dependencies {
+    // Modules
+    implementation project(Dependencies.Module.domain)
+
+    // Unit Testing
+    testImplementation Dependencies.Test.mockk
+    testImplementation Dependencies.Test.test_junit
+    testImplementation Dependencies.Test.coroutine
+
+    // Coroutine
+    implementation Dependencies.Coroutine.coroutine
+
+    // RoomDB
+    implementation Dependencies.Room.runtime
+    implementation Dependencies.Room.ktxCoroutines
+    kapt Dependencies.Room.compiler
+
+    // Moshi
+    implementation Dependencies.Moshi.moshi
+    kapt Dependencies.Moshi.kaptMoshi
+
+    //
+//    // Retrofit
+//    api Dependencies.Retrofit2.retrofit
+//    api Dependencies.Retrofit2.converterGson
+//
+//    // OkHttp3
+//    api Dependencies.OkHttp3.loggingInterceptor
+//    api Dependencies.OkHttp3.okHttp3
+//
+    // Gson
+    implementation Dependencies.Gson.gson
+
+    //Koin
+    implementation Dependencies.Koin.koin
+}
