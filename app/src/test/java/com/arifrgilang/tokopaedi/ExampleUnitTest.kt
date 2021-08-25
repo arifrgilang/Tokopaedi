@@ -1,4 +1,4 @@
-package com.arifrgilang.opakushop
+package com.arifrgilang.tokopaedi
 
 import org.junit.Test
 
