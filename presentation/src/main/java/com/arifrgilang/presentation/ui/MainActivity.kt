@@ -23,7 +23,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
     private lateinit var mAuthListener: FirebaseAuth.AuthStateListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_OpakuShop)
+        setTheme(R.style.Theme_Tokopaedi)
         super.onCreate(savedInstanceState)
     }
 

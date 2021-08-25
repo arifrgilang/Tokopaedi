@@ -41,6 +41,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925946540555:android:90205663f05ebe75480d0e",
+        "android_client_info": {
+          "package_name": "com.arifrgilang.tokopaedi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925946540555-trtsgs8c9mift5qselrk21ei2if1qog9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arifrgilang.tokopaedi",
+            "certificate_hash": "6c964db289f9d4e4c505c8e312de80c477e92f0a"
+          }
+        },
+        {
+          "client_id": "925946540555-pctan8qvlcg4lqd2i67fh3fs0j30brn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9f6CE57Xy106TcaRjPgd4L3oZgIgeClI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925946540555-pctan8qvlcg4lqd2i67fh3fs0j30brn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

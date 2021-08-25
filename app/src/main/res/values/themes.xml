@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.OpakuShop" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Tokopaedi" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#62ba54</item>
         <item name="colorPrimaryVariant">#509c51</item>

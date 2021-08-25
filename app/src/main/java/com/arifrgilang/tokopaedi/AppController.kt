@@ -1,6 +1,5 @@
-package com.arifrgilang.opakushop
+package com.arifrgilang.tokopaedi
 
-import android.app.Application
 import androidx.multidex.MultiDexApplication
 import com.arifrgilang.data.di.dataModule
 import com.arifrgilang.domain.di.domainModule

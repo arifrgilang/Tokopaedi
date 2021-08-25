@@ -1,4 +1,4 @@
-package com.arifrgilang.opakushop
+package com.arifrgilang.tokopaedi
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

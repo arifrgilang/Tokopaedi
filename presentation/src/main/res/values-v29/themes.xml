@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.OpakuShop" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Tokopaedi" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:forceDarkAllowed">false</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">#62ba54</item>
@@ -16,7 +16,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.OpakuShop.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Tokopaedi.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:forceDarkAllowed">false</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">#62ba54</item>
