@@ -2,4 +2,4 @@ include ':presentation'
 include ':domain'
 include ':data'
 include ':app'
-rootProject.name = "Opaku Shop"
+rootProject.name = "Tokopaedi"
