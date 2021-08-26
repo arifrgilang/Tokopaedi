@@ -6,6 +6,10 @@
       <module name="Opaku_Shop.data" target="11" />
       <module name="Opaku_Shop.presentation" target="11" />
       <module name="OpakuShop.buildSrc" target="11" />
+      <module name="Tokopaedi.app" target="11" />
+      <module name="Tokopaedi.buildSrc" target="11" />
+      <module name="Tokopaedi.data" target="11" />
+      <module name="Tokopaedi.presentation" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

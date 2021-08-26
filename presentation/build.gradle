@@ -17,8 +17,6 @@ android {
     defaultConfig {
         minSdkVersion Version.minSdk
         targetSdkVersion Version.targetSdk
-        versionCode Version.versionCode
-        versionName Version.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
         multiDexEnabled true
