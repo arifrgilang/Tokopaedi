@@ -9,7 +9,7 @@ object Version {
     const val compileSdk = 29
     const val targetSdk = 29
     const val minSdk = 21
-    const val kotlin = "1.4.21"
+    const val kotlin = "1.5.30"
 
     // Ui Related
     const val circularImage = "4.0.2"
@@ -62,7 +62,7 @@ object Version {
     const val gson = "2.8.6"
 
     // Navigation
-    const val navigation = "2.3.0"
+    const val navigation = "2.3.5"
 
     // Lifecycle
     const val lifecycleVersion = "2.2.0"
