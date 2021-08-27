@@ -11,9 +11,7 @@ buildscript {
 repositories {
     mavenCentral()
 }
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.30"
-}
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"

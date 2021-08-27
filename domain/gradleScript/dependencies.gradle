@@ -5,6 +5,7 @@ dependencies {
     testImplementation Dependencies.Test.mockk
     testImplementation Dependencies.Test.test_junit
     testImplementation Dependencies.Test.coroutine
+    testImplementation Dependencies.Test.testing_core_testing
 
     //Koin
     implementation Dependencies.Koin.koin

@@ -5,7 +5,7 @@ package dependencies
 object Version {
     // Android configuration
     const val appId = "com.arifrgilang.tokopaedi"
-    const val buildTools = "29.0.3"
+    const val buildTools = "30.0.2"
     const val compileSdk = 29
     const val targetSdk = 29
     const val minSdk = 21
