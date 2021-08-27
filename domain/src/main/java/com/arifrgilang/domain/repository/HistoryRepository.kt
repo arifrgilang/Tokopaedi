@@ -1,6 +1,7 @@
 package com.arifrgilang.domain.repository
 
 import com.arifrgilang.domain.model.HistoryDomainModel
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -8,6 +9,6 @@ import com.arifrgilang.domain.model.HistoryDomainModel
  */
 interface HistoryRepository {
     suspend fun insert(item: HistoryDomainModel)
-    suspend fun getHistoryWithId(historyId: Int): HistoryDomainModel
-    suspend fun getHistoryWithEmail(userEmail: String): List<HistoryDomainModel>
+    fun getHistoryWithId(historyId: Int): Flow<HistoryDomainModel>
+    fun getHistoryWithEmail(userEmail: String): Flow<List<HistoryDomainModel>>
 }

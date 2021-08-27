@@ -16,6 +16,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.transform
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -81,12 +84,12 @@ class CartViewModelImpl(
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
             val user = FirebaseAuth.getInstance().currentUser
-            val rawData = getCartWithEmail.execute(user?.email!!)
-            val cartItemsData = rawData.map { model ->
-                cartDomainMapper.mapDomainToUi(model)
+            getCartWithEmail.execute(user?.email!!).map { items ->
+                items.map { cartDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _cartItems.postValue(it)
+                _isLoading.value = false
             }
-            _cartItems.postValue(cartItemsData)
-            _isLoading.value = false
         }
     }
 

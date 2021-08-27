@@ -5,6 +5,8 @@ import com.arifrgilang.data.di.dataModule
 import com.arifrgilang.domain.di.domainModule
 import com.arifrgilang.presentation.di.presentationModule
 import com.orhanobut.hawk.Hawk
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -13,6 +15,8 @@ import timber.log.Timber
 /**
  * Created by arifrgilang on 4/14/2021
  */
+@FlowPreview
+@ExperimentalCoroutinesApi
 class AppController: MultiDexApplication(){
     override fun onCreate() {
         super.onCreate()

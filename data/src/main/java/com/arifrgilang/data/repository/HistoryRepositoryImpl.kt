@@ -4,6 +4,8 @@ import com.arifrgilang.data.database.history.HistoryDao
 import com.arifrgilang.data.database.history.HistoryDataMapper
 import com.arifrgilang.domain.model.HistoryDomainModel
 import com.arifrgilang.domain.repository.HistoryRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 
 /**
@@ -17,11 +19,11 @@ class HistoryRepositoryImpl(
         historyDao.insert(historyMapper.mapDomainToData(item))
     }
 
-    override suspend fun getHistoryWithId(historyId: Int): HistoryDomainModel =
-        historyMapper.mapDataToDomain(historyDao.getHistoryWithId(historyId))
+    override fun getHistoryWithId(historyId: Int): Flow<HistoryDomainModel> =
+        historyDao.getHistoryWithId(historyId).map { historyMapper.mapDataToDomain(it) }
 
-    override suspend fun getHistoryWithEmail(userEmail: String): List<HistoryDomainModel> =
+    override fun getHistoryWithEmail(userEmail: String): Flow<List<HistoryDomainModel>> =
         historyDao.getHistoryWithEmail(userEmail).map { items ->
-            historyMapper.mapDataToDomain(items)
+            items.map { historyMapper.mapDataToDomain(it) }
         }
 }

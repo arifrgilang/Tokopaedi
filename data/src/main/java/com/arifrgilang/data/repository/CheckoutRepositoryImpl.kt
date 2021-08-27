@@ -4,6 +4,8 @@ import com.arifrgilang.data.database.checkout.CheckoutDao
 import com.arifrgilang.data.database.checkout.CheckoutDataMapper
 import com.arifrgilang.domain.model.CheckoutDomainModel
 import com.arifrgilang.domain.repository.CheckoutRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 /**
  * Created by arifrgilang on 4/26/2021
@@ -20,12 +22,13 @@ class CheckoutRepositoryImpl(
         checkoutDao.deleteWithId(checkoutId)
     }
 
-    override suspend fun getCheckoutWithId(checkoutId: Int): CheckoutDomainModel =
-        checkoutMapper.mapDataToDomain(checkoutDao.getCheckoutWithId(checkoutId))
+    override fun getCheckoutWithId(checkoutId: Int): Flow<CheckoutDomainModel> =
+        checkoutDao.getCheckoutWithId(checkoutId).map {
+            checkoutMapper.mapDataToDomain(it)
+        }
 
-
-    override suspend fun getCheckoutWithEmail(userEmail: String): List<CheckoutDomainModel> =
+    override fun getCheckoutWithEmail(userEmail: String): Flow<List<CheckoutDomainModel>> =
         checkoutDao.getCheckoutWithEmail(userEmail).map { items ->
-            checkoutMapper.mapDataToDomain(items)
+            items.map { checkoutMapper.mapDataToDomain(it) }
         }
 }

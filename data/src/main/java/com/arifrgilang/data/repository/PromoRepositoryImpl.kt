@@ -6,7 +6,6 @@ import com.arifrgilang.domain.model.PromoDomainModel
 import com.arifrgilang.domain.repository.PromoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.transform
 
 
 /**
@@ -24,9 +23,13 @@ class PromoRepositoryImpl(
         )
     }
 
-    override suspend fun getAllPromo(): List<PromoDomainModel> =
-        promoDao.getAll().map { promoMapper.mapDataToDomain(it) }
+    override fun getAllPromo(): Flow<List<PromoDomainModel>> =
+        promoDao.getAll().map { items ->
+            items.map { promoMapper.mapDataToDomain(it) }
+        }
 
-    override suspend fun getPromo(promoId: Int): PromoDomainModel =
-        promoMapper.mapDataToDomain(promoDao.getPromo(promoId))
+    override fun getPromo(promoId: Int): Flow<PromoDomainModel> =
+        promoDao.getPromo(promoId).map {
+            promoMapper.mapDataToDomain(it)
+        }
 }

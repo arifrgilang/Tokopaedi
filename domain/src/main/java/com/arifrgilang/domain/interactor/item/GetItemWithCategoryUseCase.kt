@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.Flow
  * Created by arifrgilang on 4/25/2021
  */
 interface GetItemWithCategoryUseCase {
-    suspend fun execute(itemCategory: String) : List<ItemDomainModel>
+    fun execute(itemCategory: String) : Flow<List<ItemDomainModel>>
 }
 
 class GetItemWithCategoryUseCaseImpl(
     private val itemRepository: ItemRepository
 ) : GetItemWithCategoryUseCase {
-    override suspend fun execute(itemCategory: String): List<ItemDomainModel> =
+    override fun execute(itemCategory: String): Flow<List<ItemDomainModel>> =
         itemRepository.getItemWithCategory(itemCategory)
 }

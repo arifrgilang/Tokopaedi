@@ -15,8 +15,8 @@ interface PromoDao {
     suspend fun insertAll(promos: List<PromoDataModel>)
 
     @Query("SELECT * FROM PROMO")
-    suspend fun getAll(): List<PromoDataModel>
+    fun getAll(): Flow<List<PromoDataModel>>
 
     @Query("SELECT * FROM PROMO WHERE id = :promoId")
-    suspend fun getPromo(promoId: Int): PromoDataModel
+    fun getPromo(promoId: Int): Flow<PromoDataModel>
 }

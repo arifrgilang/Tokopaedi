@@ -7,7 +7,6 @@ import com.arifrgilang.domain.interactor.history.PostHistoryUseCase
 import com.arifrgilang.domain.model.HistoryDomainModel
 import com.arifrgilang.presentation.mapper.CartDomainMapper
 import com.arifrgilang.presentation.mapper.CheckoutDomainMapper
-import com.arifrgilang.presentation.model.CartUiModel
 import com.arifrgilang.presentation.model.CheckoutUiModel
 import com.arifrgilang.presentation.util.event.Event
 import com.arifrgilang.presentation.util.event.eventOf
@@ -17,6 +16,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -75,12 +76,12 @@ class CheckoutViewModelImpl(
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
             val user = FirebaseAuth.getInstance().currentUser
-            val rawData = getCheckoutWithEmail.execute(user?.email!!)
-            val checkoutItemsData = rawData.map { model ->
-                checkoutDomainMapper.mapDomainToUi(model)
+            getCheckoutWithEmail.execute(user?.email!!).map { items ->
+                items.map { checkoutDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _checkoutItems.postValue(it)
+                _isLoading.value = false
             }
-            _checkoutItems.postValue(checkoutItemsData)
-            _isLoading.value = false
         }
     }
 

@@ -1,13 +1,11 @@
 package com.arifrgilang.data.repository
 
-import android.util.Log
 import com.arifrgilang.data.database.item.ItemDao
 import com.arifrgilang.data.database.item.ItemDataMapper
 import com.arifrgilang.domain.model.ItemDomainModel
 import com.arifrgilang.domain.repository.ItemRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.transform
 
 class ItemRepositoryImpl(
     private val itemMapper: ItemDataMapper,
@@ -21,16 +19,16 @@ class ItemRepositoryImpl(
         )
     }
 
-    override suspend fun getAllItem(): List<ItemDomainModel> =
+    override fun getAllItem(): Flow<List<ItemDomainModel>> =
         itemDao.getAllItem().map { list ->
-            itemMapper.mapDataToDomain(list)
+            list.map { itemMapper.mapDataToDomain(it) }
         }
 
-    override suspend fun getItem(itemId: Int): ItemDomainModel =
-        itemMapper.mapDataToDomain(itemDao.getItem(itemId))
+    override fun getItem(itemId: Int): Flow<ItemDomainModel> =
+        itemDao.getItem(itemId).map { itemMapper.mapDataToDomain(it) }
 
-    override suspend fun getItemWithCategory(itemCategory: String?): List<ItemDomainModel> =
+    override fun getItemWithCategory(itemCategory: String?): Flow<List<ItemDomainModel>> =
         itemDao.getItemWithCategory(itemCategory).map { items ->
-            itemMapper.mapDataToDomain(items)
+            items.map { itemMapper.mapDataToDomain(it) }
         }
 }

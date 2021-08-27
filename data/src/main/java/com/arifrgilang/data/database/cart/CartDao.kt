@@ -1,9 +1,9 @@
 package com.arifrgilang.data.database.cart
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -21,5 +21,5 @@ interface CartDao {
     suspend fun deleteByEmail(userEmail: String)
 
     @Query("SELECT * FROM CART WHERE USER_EMAIL = :userEmail")
-    suspend fun getCartWithEmail(userEmail: String): List<CartDataModel>
+    fun getCartWithEmail(userEmail: String): Flow<List<CartDataModel>>
 }

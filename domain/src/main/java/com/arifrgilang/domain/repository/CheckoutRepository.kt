@@ -1,6 +1,7 @@
 package com.arifrgilang.domain.repository
 
 import com.arifrgilang.domain.model.CheckoutDomainModel
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -9,6 +10,6 @@ import com.arifrgilang.domain.model.CheckoutDomainModel
 interface CheckoutRepository {
     suspend fun postCheckout(item: CheckoutDomainModel)
     suspend fun deleteWithId(checkoutId: Int)
-    suspend fun getCheckoutWithId(checkoutId: Int): CheckoutDomainModel
-    suspend fun getCheckoutWithEmail(userEmail: String): List<CheckoutDomainModel>
+    fun getCheckoutWithId(checkoutId: Int): Flow<CheckoutDomainModel>
+    fun getCheckoutWithEmail(userEmail: String): Flow<List<CheckoutDomainModel>>
 }

@@ -3,6 +3,7 @@ package com.arifrgilang.data.database.checkout
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -17,8 +18,8 @@ interface CheckoutDao {
     suspend fun deleteWithId(checkoutId: Int)
 
     @Query("SELECT * FROM CHECKOUT WHERE id = :checkoutId")
-    suspend fun getCheckoutWithId(checkoutId: Int): CheckoutDataModel
+    fun getCheckoutWithId(checkoutId: Int): Flow<CheckoutDataModel>
 
     @Query("SELECT * FROM CHECKOUT WHERE USER_EMAIL = :userEmail")
-    suspend fun getCheckoutWithEmail(userEmail: String): List<CheckoutDataModel>
+    fun getCheckoutWithEmail(userEmail: String): Flow<List<CheckoutDataModel>>
 }

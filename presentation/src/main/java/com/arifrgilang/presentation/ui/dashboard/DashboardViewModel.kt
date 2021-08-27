@@ -16,6 +16,8 @@ import com.arifrgilang.presentation.model.*
 import com.arifrgilang.presentation.util.event.Event
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -108,40 +110,48 @@ class DashboardViewModelImpl(
         Timber.d("Get clothes with category $category")
         viewModelScope.launch(errorHandler) {
             _isLoadingClothes.value = true
-            val rawData = getItemWithCategoryUseCase.execute(category)
-            val clothesData = rawData.map { itemDomainMapper.mapDomainToUi(it) }
-            _clothesData.postValue(clothesData)
-            _isLoadingClothes.value = false
+            getItemWithCategoryUseCase.execute(category).map { items ->
+                items.map { itemDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _clothesData.postValue(it)
+                _isLoadingClothes.value = false
+            }
         }
     }
 
     override fun getCartWithEmail(email: String) {
         viewModelScope.launch(errorHandler) {
             _isLoadingProfile.value = true
-            val rawData = getCartWithEmail.execute(email)
-            val cartData = rawData.map { cartDomainMapper.mapDomainToUi(it) }
-            _cartCount.postValue(cartData.size)
-            _isLoadingProfile.value = false
+            getCartWithEmail.execute(email).map { items ->
+                items.map { cartDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _cartCount.postValue(it.size)
+                _isLoadingProfile.value = false
+            }
         }
     }
 
     override fun getCheckoutWithEmail(email: String) {
         viewModelScope.launch(errorHandler) {
             _isLoadingProfile.value = true
-            val rawData = getCheckoutWithEmail.execute(email)
-            val checkoutData = rawData.map { checkoutDomainMapper.mapDomainToUi(it) }
-            _checkoutCount.postValue(checkoutData.size)
-            _isLoadingProfile.value = false
+            getCheckoutWithEmail.execute(email).map { items ->
+                items.map { checkoutDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _checkoutCount.postValue(it.size)
+                _isLoadingProfile.value = false
+            }
         }
     }
 
     override fun getHistoryWithEmail(email: String) {
         viewModelScope.launch(errorHandler) {
             _isLoadingProfile.value = true
-            val rawData = getHistoryWithEmail.execute(email)
-            val historyData = rawData.map { historyDomainMapper.mapDomainToUi(it) }
-            _historyCount.postValue(historyData.size)
-            _isLoadingProfile.value = false
+            getHistoryWithEmail.execute(email).map { items ->
+                items.map { historyDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _historyCount.postValue(it.size)
+                _isLoadingProfile.value = false
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ import com.arifrgilang.presentation.mapper.PromoDomainMapper
 import com.arifrgilang.presentation.model.PromoUiModel
 import com.arifrgilang.presentation.util.event.Event
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -48,10 +50,12 @@ class PromoDetailViewModelImpl(
     override fun getPromo(promoId: Int) {
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
-            val rawData = getPromo.execute(promoId)
-            val promoData = promoDomainMapper.mapDomainToUi(rawData)
-            _promoData.postValue(promoData)
-            _isLoading.value = false
+            getPromo.execute(promoId).map {
+                promoDomainMapper.mapDomainToUi(it)
+            }.collect {
+                _promoData.postValue(it)
+                _isLoading.value = false
+            }
         }
     }
 

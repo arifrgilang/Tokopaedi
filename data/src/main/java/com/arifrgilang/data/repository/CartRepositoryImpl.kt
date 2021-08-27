@@ -4,6 +4,9 @@ import com.arifrgilang.data.database.cart.CartDao
 import com.arifrgilang.data.database.cart.CartDataMapper
 import com.arifrgilang.domain.model.CartDomainModel
 import com.arifrgilang.domain.repository.CartRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.transform
 
 
 /**
@@ -25,8 +28,8 @@ class CartRepositoryImpl(
         cartDao.deleteByEmail(userEmail)
     }
 
-    override suspend fun getCartWithEmail(userEmail: String): List<CartDomainModel> =
+    override fun getCartWithEmail(userEmail: String): Flow<List<CartDomainModel>> =
         cartDao.getCartWithEmail(userEmail).map { items ->
-            cartMapper.mapDataToDomain(items)
+            items.map { cartMapper.mapDataToDomain(it) }
         }
 }

@@ -3,7 +3,6 @@ package com.arifrgilang.presentation.ui.itemdetail
 import androidx.lifecycle.*
 import com.arifrgilang.domain.interactor.cart.PostCartUseCase
 import com.arifrgilang.domain.interactor.item.GetItemUseCase
-import com.arifrgilang.domain.interactor.item.PostItemsUseCase
 import com.arifrgilang.domain.model.CartDomainModel
 import com.arifrgilang.presentation.mapper.ItemDomainMapper
 import com.arifrgilang.presentation.model.ItemUiModel
@@ -15,6 +14,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -68,10 +69,12 @@ class ItemDetailViewModelImpl(
     override fun getItemDetail(itemId: Int) {
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
-            val rawData = getItemDetail.execute(itemId)
-            val itemData = itemDomainMapper.mapDomainToUi(rawData)
-            _itemData.postValue(itemData)
-            _isLoading.value = false
+            getItemDetail.execute(itemId).map {
+                itemDomainMapper.mapDomainToUi(it)
+            }.collect {
+                _itemData.postValue(it)
+                _isLoading.value = false
+            }
         }
     }
 

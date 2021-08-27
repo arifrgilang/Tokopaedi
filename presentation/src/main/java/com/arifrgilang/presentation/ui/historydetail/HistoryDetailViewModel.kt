@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arifrgilang.domain.interactor.checkout.GetCheckoutWithIdUseCase
 import com.arifrgilang.domain.interactor.history.GetHistoryWithIdUseCase
-import com.arifrgilang.presentation.mapper.CheckoutDomainMapper
 import com.arifrgilang.presentation.mapper.HistoryDomainMapper
 import com.arifrgilang.presentation.model.CartUiModel
 import com.arifrgilang.presentation.util.event.Event
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -51,10 +51,12 @@ class HistoryDetailViewModelImpl(
     override fun getHistoryItemsWithId(checkoutId: Int) {
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
-            val rawData = getHistoryWithId.execute(checkoutId)
-            val checkoutData = historyDomainMapper.mapDomainToUi(rawData)
-            _cartItems.postValue(checkoutData.items)
-            _isLoading.value = false
+            getHistoryWithId.execute(checkoutId).map {
+                historyDomainMapper.mapDomainToUi(it)
+            }.collect { item ->
+                _cartItems.postValue(item.items)
+                _isLoading.value = false
+            }
         }
     }
 

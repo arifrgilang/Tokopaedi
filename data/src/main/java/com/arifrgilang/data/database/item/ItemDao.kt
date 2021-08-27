@@ -15,11 +15,11 @@ interface ItemDao {
     suspend fun insertAll(items: List<ItemDataModel>)
 
     @Query("SELECT * FROM ITEM")
-    suspend fun getAllItem(): List<ItemDataModel>
+    fun getAllItem(): Flow<List<ItemDataModel>>
 
     @Query("SELECT * FROM ITEM WHERE id = :itemId")
-    suspend fun getItem(itemId: Int): ItemDataModel
+    fun getItem(itemId: Int): Flow<ItemDataModel>
 
     @Query("SELECT * FROM ITEM WHERE ITEM_CATEGORY = :itemCategory")
-    suspend fun getItemWithCategory(itemCategory: String?): List<ItemDataModel>
+    fun getItemWithCategory(itemCategory: String?): Flow<List<ItemDataModel>>
 }

@@ -10,6 +10,8 @@ import com.arifrgilang.presentation.model.HistoryUiModel
 import com.arifrgilang.presentation.util.event.Event
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -51,12 +53,12 @@ class HistoryViewModelImpl(
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
             val user = FirebaseAuth.getInstance().currentUser
-            val rawData = getHistoryWithEmail.execute(user?.email!!)
-            val historyItemsData = rawData.map { model->
-                historyDomainMapper.mapDomainToUi(model)
+            getHistoryWithEmail.execute(user?.email!!).map { items ->
+                items.map { historyDomainMapper.mapDomainToUi(it) }
+            }.collect {
+                _historyItems.postValue(it)
+                _isLoading.value = false
             }
-            _historyItems.postValue(historyItemsData)
-            _isLoading.value = false
         }
     }
 }

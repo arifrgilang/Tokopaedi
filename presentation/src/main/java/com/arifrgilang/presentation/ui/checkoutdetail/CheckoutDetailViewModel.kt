@@ -9,6 +9,8 @@ import com.arifrgilang.presentation.mapper.CheckoutDomainMapper
 import com.arifrgilang.presentation.model.CartUiModel
 import com.arifrgilang.presentation.util.event.Event
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -49,10 +51,12 @@ class CheckoutDetailViewModelImpl(
     override fun getCheckoutItemsWithId(checkoutId: Int) {
         viewModelScope.launch(errorHandler) {
             _isLoading.value = true
-            val rawData = getCheckoutWithId.execute(checkoutId)
-            val checkoutData = checkoutDomainMapper.mapDomainToUi(rawData)
-            _cartItems.postValue(checkoutData.items)
-            _isLoading.value = false
+            getCheckoutWithId.execute(checkoutId).map {
+                checkoutDomainMapper.mapDomainToUi(it)
+            }.collect {
+                _cartItems.postValue(it.items)
+                _isLoading.value = false
+            }
         }
     }
 }

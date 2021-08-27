@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.Flow
  * Created by arifrgilang on 4/25/2021
  */
 interface GetPromosUseCase {
-    suspend fun execute(): List<PromoDomainModel>
+    fun execute(): Flow<List<PromoDomainModel>>
 }
 
 class GetPromosUseCaseImpl(
     private val promoRepository: PromoRepository
 ) : GetPromosUseCase {
-    override suspend fun execute(): List<PromoDomainModel> =
+    override fun execute(): Flow<List<PromoDomainModel>> =
         promoRepository.getAllPromo()
 }

@@ -1,6 +1,7 @@
 package com.arifrgilang.domain.repository
 
 import com.arifrgilang.domain.model.CartDomainModel
+import kotlinx.coroutines.flow.Flow
 
 
 /**
@@ -10,5 +11,5 @@ interface CartRepository {
     suspend fun insert(item: CartDomainModel)
     suspend fun deleteWithId(itemId: Int)
     suspend fun deleteByEmail(userEmail: String)
-    suspend fun getCartWithEmail(userEmail: String): List<CartDomainModel>
+    fun getCartWithEmail(userEmail: String): Flow<List<CartDomainModel>>
 }
