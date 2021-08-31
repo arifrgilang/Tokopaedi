@@ -8,6 +8,10 @@ dependencies {
     testImplementation Dependencies.Test.mockk
     testImplementation Dependencies.Test.test_junit
     testImplementation Dependencies.Test.coroutine
+    testImplementation Dependencies.Test.androidx_test_core
+    testImplementation Dependencies.Test.androidx_junit
+    testImplementation Dependencies.Test.junit_engine
+    testImplementation Dependencies.Test.robolectric
 
     // Coroutine
     implementation Dependencies.Coroutine.coroutine

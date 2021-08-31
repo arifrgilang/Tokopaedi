@@ -49,4 +49,13 @@ android {
     buildFeatures {
         dataBinding true
     }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        unitTests.includeAndroidResources = true
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
+

@@ -80,10 +80,14 @@ object Version {
     const val glideKapt = "4.10.0"
 
     // Testing Libraries
+    const val androidXJUnit = "1.1.2"
+    const val androidXTestCore = "1.4.0"
     const val junit = "4.13"
     const val coreTesting = "2.1.0"
     const val espresso = "3.3.0"
     const val rules = "1.1.0"
     const val runner = "1.1.0"
     const val assertJVersion = "3.2.0"
+    const val junitEngine = "5.7.1"
+    const val robolectric = "4.4"
 }
